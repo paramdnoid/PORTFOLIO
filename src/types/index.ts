@@ -29,12 +29,6 @@ export interface Project {
   year: number;
 }
 
-export interface Skill {
-  name: string;
-  category: "frontend" | "backend" | "tools" | "other";
-  level: "expert" | "advanced" | "intermediate";
-}
-
 /** Metadata for a supported locale */
 export interface LocaleConfig {
   /** ISO 639-1 code, e.g. "de" */
