@@ -1,0 +1,14 @@
+{
+  "title": "Kontakt",
+  "subtitle": "Lass uns zusammenarbeiten",
+  "nameLabel": "Name",
+  "namePlaceholder": "Dein Name",
+  "emailLabel": "E-Mail",
+  "emailPlaceholder": "deine@email.de",
+  "messageLabel": "Nachricht",
+  "messagePlaceholder": "Erzähl mir von deinem Projekt...",
+  "send": "Nachricht senden",
+  "sending": "Wird gesendet...",
+  "success": "Nachricht erfolgreich gesendet!",
+  "error": "Nachricht konnte nicht gesendet werden. Bitte versuche es erneut."
+}
