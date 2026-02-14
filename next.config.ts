@@ -82,6 +82,12 @@ const nextConfig: NextConfig = {
   logging: {
     fetches: { fullUrl: true },
   },
+  experimental: {
+    // Optimiert Tree-Shaking fuer Pakete mit vielen benannten Exports.
+    // lucide-react ist bereits standardmaessig optimiert; hier werden
+    // zusaetzliche Bibliotheken hinzugefuegt, die Barrel-Files nutzen.
+    optimizePackageImports: ["radix-ui", "motion"],
+  },
   headers() {
     return [
       {

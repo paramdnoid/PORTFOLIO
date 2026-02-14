@@ -110,6 +110,9 @@ const eslintConfig = defineConfig([
       "@typescript-eslint/prefer-includes": "error",
       // Verhindert unsichere Enum-Vergleiche (z.B. enum === string)
       "@typescript-eslint/no-unsafe-enum-comparison": "error",
+      // Verhindert versehentliche Console-Statements in Production-Code
+      "no-console": ["error", { allow: ["warn", "error"] }],
+
       // Konsistente Namenskonventionen
       "@typescript-eslint/naming-convention": [
         "error",
@@ -122,6 +125,13 @@ const eslintConfig = defineConfig([
           format: ["PascalCase"],
         },
       ],
+    },
+  },
+  // CLI-Skripte duerfen console.log verwenden (kein Production-Code).
+  {
+    files: ["scripts/**/*.ts"],
+    rules: {
+      "no-console": "off",
     },
   },
   // Disable formatting rules that conflict with Prettier.
