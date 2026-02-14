@@ -12,13 +12,14 @@ import type { SiteConfig } from "@/types";
  * @see {@link SiteConfig} for the type definition.
  */
 export const siteConfig = {
-  name: "Andre",
-  description: "Full-Stack Developer Portfolio",
+  name: "Andre Zimmermann",
+  description:
+    "Development Leader & Full-Stack Engineer with 20+ years of experience",
   url: env.NEXT_PUBLIC_SITE_URL,
   ogImage: "/og-image.svg",
   links: {
-    github: "https://github.com/andre",
-    linkedin: "https://linkedin.com/in/andre",
-    email: "hello@andre.dev",
+    github: "https://github.com/andrz1mm3rmann",
+    linkedin: "https://linkedin.com/in/andre-zimmermann",
+    email: "andrz1mm3rmann@gmail.com",
   },
 } satisfies SiteConfig;

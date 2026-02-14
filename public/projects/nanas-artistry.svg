@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18181b"/>
+      <stop offset="100%" stop-color="#1e1b2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e879a8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Decorative circles -->
+  <circle cx="950" cy="150" r="200" fill="#e879a8" opacity="0.06"/>
+  <circle cx="250" cy="480" r="160" fill="#c084fc" opacity="0.05"/>
+  <!-- Card background -->
+  <rect x="40" y="40" width="1120" height="550" rx="20" fill="#27272a" stroke="#3f3f46" stroke-width="1"/>
+  <!-- Sewing needle icon -->
+  <g transform="translate(560,180)" opacity="0.15">
+    <line x1="0" y1="-60" x2="0" y2="60" stroke="#e879a8" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="0" cy="-60" rx="6" ry="10" fill="none" stroke="#e879a8" stroke-width="2"/>
+    <path d="M0,60 Q20,80 0,100 Q-20,120 0,140" fill="none" stroke="#e879a8" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <!-- Title -->
+  <text x="600" y="280" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="700" fill="url(#accent)">Nana's Artistry</text>
+  <!-- Subtitle -->
+  <text x="600" y="330" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="22" fill="#a1a1aa">Nähatelier · Ilanz, Graubünden</text>
+  <!-- Tech stack -->
+  <text x="600" y="390" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#71717a">Next.js · TypeScript · Tailwind CSS · shadcn/ui · Framer Motion</text>
+  <!-- Decorative line -->
+  <rect x="480" y="350" width="240" height="1" fill="url(#accent)" opacity="0.3" rx="1"/>
+</svg>

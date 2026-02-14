@@ -17,8 +17,14 @@ export function AboutPreview(): React.ReactElement {
   const t = useTranslations("about");
 
   return (
-    <section className="py-24 px-4">
-      <div className="container mx-auto max-w-5xl">
+    <section className="relative pt-24 pb-12 px-4">
+      {/* Ambient glow for frosted glass depth */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/4 top-1/3 size-[400px] rounded-full blur-3xl"
+        style={{ backgroundColor: "var(--chrome)", opacity: 0.04 }}
+      />
+      <div className="container relative mx-auto max-w-5xl px-4">
         <SectionHeading title={t("title")} subtitle={t("subtitle")} />
         <FadeIn>
           <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">

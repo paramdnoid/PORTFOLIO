@@ -3,7 +3,7 @@ import type { ReactElement } from "react";
 export default function Loading(): ReactElement {
   return (
     <div className="min-h-screen px-4 py-24">
-      <div className="container mx-auto max-w-5xl">
+      <div className="container mx-auto max-w-5xl px-4">
         {/* Hero skeleton */}
         <div className="mb-24 flex min-h-[60vh] flex-col justify-center">
           <div className="h-4 w-32 animate-pulse rounded bg-muted" />

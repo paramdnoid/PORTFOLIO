@@ -1,8 +1,12 @@
 {
   "title": "Skills & Tools",
-  "subtitle": "Technologies I work with",
-  "frontend": "Frontend",
-  "backend": "Backend",
-  "tools": "Tools & DevOps",
-  "other": "Other"
+  "subtitle": "Technologies from 20+ years of practice — derived from real projects",
+  "frontend": "Frontend & UI",
+  "crossPlatform": "Cross-Platform",
+  "backend": "Backend & APIs",
+  "databases": "Databases & Persistence",
+  "devops": "DevOps & Infrastructure",
+  "testing": "Testing & Quality Assurance",
+  "security": "Security, Compliance & Monitoring",
+  "leadership": "Leadership & Methodology"
 }

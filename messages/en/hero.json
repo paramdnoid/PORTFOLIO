@@ -1,8 +1,9 @@
 {
   "greeting": "Hi, I'm",
-  "name": "Andre",
-  "role": "Full-Stack Developer",
-  "tagline": "I build modern web experiences with attention to detail.",
-  "cta": "See my work",
-  "ctaSecondary": "Get in touch"
+  "name": "Andre Zimmermann",
+  "role": "Development Leader & Full-Stack Engineer",
+  "tagline": "Leading development teams and architecting scalable solutions with 20+ years of expertise in modern web technologies.",
+  "cta": "View Experience",
+  "ctaSecondary": "Get in touch",
+  "certificationsLabel": "Certifications & Education"
 }

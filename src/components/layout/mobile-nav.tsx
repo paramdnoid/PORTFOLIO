@@ -48,18 +48,31 @@ export function MobileNav(): React.ReactElement {
         </SheetHeader>
         <Separator className="my-4" />
         <nav className="flex flex-col gap-1">
-          {navigationItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => {
-                setOpen(false);
-              }}
-              className="rounded-md px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-            >
-              {t(item.titleKey)}
-            </Link>
-          ))}
+          {navigationItems.map((item) =>
+            item.href.startsWith("/#") ? (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => {
+                  setOpen(false);
+                }}
+                className="rounded-md px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+              >
+                {t(item.titleKey)}
+              </a>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => {
+                  setOpen(false);
+                }}
+                className="rounded-md px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+              >
+                {t(item.titleKey)}
+              </Link>
+            ),
+          )}
         </nav>
       </SheetContent>
     </Sheet>

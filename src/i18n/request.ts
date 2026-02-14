@@ -26,6 +26,7 @@ const NAMESPACES = [
   "navigation",
   "hero",
   "about",
+  "experience",
   "projects",
   "skills",
   "contact",
