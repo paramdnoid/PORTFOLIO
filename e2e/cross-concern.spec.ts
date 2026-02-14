@@ -10,73 +10,57 @@ import {
 } from "./fixtures";
 
 test.describe("Cross-Concern – Theme + Locale combined", () => {
-  test("theme and locale changes are both preserved after navigation", async ({
+  test("theme and locale changes are preserved on single page", async ({
     page,
   }) => {
     await page.goto(ROUTES.home);
     await waitForHydration(page);
 
-    // Switch theme to light (default is dark)
     const initialTheme = await getTheme(page);
     if (initialTheme === "dark") {
       await clickThemeToggle(page);
     }
     expect(await getTheme(page)).toBe("light");
 
-    // Switch locale to German
     await switchLocaleTo(page, "Deutsch");
     await expect(page).toHaveURL(/\/de\/?$/);
     expect(await getLocale(page)).toBe("de");
 
-    // Navigate to projects
-    await page.goto("/de/projects");
+    // Scroll to projects section
+    await page.goto("/de#projects");
     await waitForHydration(page);
 
-    // Both settings should be preserved
     expect(await getTheme(page)).toBe("light");
     expect(await getLocale(page)).toBe("de");
-    await expect(page).toHaveURL(/\/de\/projects$/);
+    await expect(page).toHaveURL(/\/de#projects$/);
   });
 
-  test("full user journey: home → theme → projects → detail → locale → home", async ({
+  test("full user journey: home → theme → section → locale → home", async ({
     page,
   }) => {
-    // 1. Start at homepage
     await page.goto(ROUTES.home);
     await waitForHydration(page);
     await expect(page).toHaveURL(/\/$/);
 
-    // 2. Toggle theme to light
     const initialTheme = await getTheme(page);
     if (initialTheme === "dark") {
       await clickThemeToggle(page);
     }
     expect(await getTheme(page)).toBe("light");
 
-    // 3. Navigate to projects page
-    await page.goto(ROUTES.projects);
+    await page.goto("/#projects");
     await waitForHydration(page);
-    await expect(page).toHaveURL(/\/projects$/);
+    await expect(page).toHaveURL(/#projects$/);
     expect(await getTheme(page)).toBe("light");
 
-    // 4. Navigate to a project detail page
-    await page.goto(ROUTES.projectDetail("e-commerce-platform"));
-    await waitForHydration(page);
-    await expect(page.locator("h1")).toContainText("E-Commerce Platform");
-    expect(await getTheme(page)).toBe("light");
-
-    // 5. Switch locale to German
     await switchLocaleTo(page, "Deutsch");
     expect(await getLocale(page)).toBe("de");
-    // Theme should still be light after locale switch
     expect(await getTheme(page)).toBe("light");
 
-    // 6. Navigate back to homepage
     const logo = page.locator("header").getByRole("link", { name: "Andre" });
     await logo.click();
     await waitForHydration(page);
 
-    // 7. Verify everything is consistent
     await expect(page).toHaveURL(/\/de\/?$/);
     expect(await getLocale(page)).toBe("de");
     expect(await getTheme(page)).toBe("light");

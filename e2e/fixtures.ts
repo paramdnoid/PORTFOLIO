@@ -7,24 +7,15 @@ import { expect } from "@playwright/test";
 
 export const ROUTES = {
   home: "/",
-  about: "/about",
-  projects: "/projects",
-  contact: "/contact",
-  projectDetail: (slug: string) => `/projects/${slug}`,
 } as const;
-
-export const PROJECT_SLUGS = [
-  "e-commerce-platform",
-  "task-management",
-  "weather-dashboard",
-] as const;
 
 /** Navigation items that appear in the header (desktop) and mobile sheet. */
 export const NAV_ITEMS = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Projects", href: "/projects" },
-  { label: "Contact", href: "/contact" },
+  { label: "About", href: "/#about" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Contact", href: "/#contact" },
 ] as const;
 
 // ---------------------------------------------------------------------------

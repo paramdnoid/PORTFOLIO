@@ -35,7 +35,7 @@ export function Skills(): React.ReactElement {
   ];
 
   return (
-    <section className="py-24 px-4">
+    <section id="skills" className="py-24 px-4 scroll-mt-20">
       <div className="container mx-auto max-w-5xl px-4">
         <SectionHeading title={t("title")} subtitle={t("subtitle")} />
         <div className="grid gap-8 sm:grid-cols-2">

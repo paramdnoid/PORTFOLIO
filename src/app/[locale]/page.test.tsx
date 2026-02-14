@@ -12,6 +12,9 @@ vi.mock("@/components/sections/hero", () => ({
 vi.mock("@/components/sections/about-preview", () => ({
   AboutPreview: () => <div data-testid="about-preview" />,
 }));
+vi.mock("@/components/sections/experience-preview", () => ({
+  ExperiencePreview: () => <div data-testid="experience-preview" />,
+}));
 vi.mock("@/components/sections/projects-showcase", () => ({
   ProjectsShowcase: () => <div data-testid="projects-showcase" />,
 }));

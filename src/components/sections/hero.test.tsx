@@ -12,11 +12,6 @@ vi.mock("@/components/shared/animated-wrapper", () => ({
     className?: string;
   }) => <div className={className}>{children}</div>,
 }));
-vi.mock("@/i18n/navigation", () => ({
-  Link: ({ children, href }: { children: React.ReactNode; href: string }) => (
-    <a href={href}>{children}</a>
-  ),
-}));
 
 describe("Hero", () => {
   it("renders greeting, name, role, and tagline", () => {
@@ -27,13 +22,13 @@ describe("Hero", () => {
     expect(screen.getByText("tagline")).toBeInTheDocument();
   });
 
-  it("renders CTA buttons linking to projects and contact", () => {
+  it("renders CTA buttons linking to experience and contact sections", () => {
     render(<Hero />);
     const ctaLink = screen.getByText("cta").closest("a");
-    expect(ctaLink).toHaveAttribute("href", "/projects");
+    expect(ctaLink).toHaveAttribute("href", "#experience");
 
     const ctaSecondary = screen.getByText("ctaSecondary").closest("a");
-    expect(ctaSecondary).toHaveAttribute("href", "/contact");
+    expect(ctaSecondary).toHaveAttribute("href", "#contact");
   });
 
   it("renders the heading as h1", () => {

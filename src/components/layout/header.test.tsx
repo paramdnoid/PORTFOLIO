@@ -3,6 +3,9 @@ import { describe, expect, it, vi } from "vitest";
 
 import { Header } from "./header";
 
+vi.mock("next/navigation", () => ({
+  usePathname: () => "/",
+}));
 // Mock sub-components to isolate Header
 vi.mock("@/components/layout/locale-switcher", () => ({
   LocaleSwitcher: () => <div data-testid="locale-switcher" />,
@@ -32,15 +35,16 @@ vi.mock("@/i18n/navigation", () => ({
 describe("Header", () => {
   it("renders the site name as a link", () => {
     render(<Header />);
-    const homeLink = screen.getByText("Andre");
+    const homeLink = screen.getByRole("link", { name: /Andre/i });
     expect(homeLink).toBeInTheDocument();
-    expect(homeLink.closest("a")).toHaveAttribute("href", "/");
+    expect(homeLink).toHaveAttribute("href", "/");
   });
 
   it("renders navigation items", () => {
     render(<Header />);
     expect(screen.getByText("home")).toBeInTheDocument();
     expect(screen.getByText("about")).toBeInTheDocument();
+    expect(screen.getByText("experience")).toBeInTheDocument();
     expect(screen.getByText("projects")).toBeInTheDocument();
     expect(screen.getByText("contact")).toBeInTheDocument();
   });

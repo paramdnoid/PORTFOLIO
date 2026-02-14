@@ -12,11 +12,6 @@ vi.mock("@/components/shared/animated-wrapper", () => ({
     className?: string;
   }) => <div className={className}>{children}</div>,
 }));
-vi.mock("@/i18n/navigation", () => ({
-  Link: ({ children, href }: { children: React.ReactNode; href: string }) => (
-    <a href={href}>{children}</a>
-  ),
-}));
 
 describe("ContactCTA", () => {
   it("renders the heading", () => {
@@ -31,9 +26,9 @@ describe("ContactCTA", () => {
     expect(screen.getByText("subtitle")).toBeInTheDocument();
   });
 
-  it("renders a contact link", () => {
+  it("renders a mailto contact link", () => {
     render(<ContactCTA />);
     const link = screen.getByRole("link");
-    expect(link).toHaveAttribute("href", "/contact");
+    expect(link).toHaveAttribute("href", expect.stringContaining("mailto:"));
   });
 });

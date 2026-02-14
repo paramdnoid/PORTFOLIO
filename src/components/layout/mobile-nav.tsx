@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
 import { Menu } from "lucide-react";
 
@@ -28,6 +29,7 @@ import {
 export function MobileNav(): React.ReactElement {
   const t = useTranslations("navigation");
   const tCommon = useTranslations("common");
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   return (
@@ -52,7 +54,7 @@ export function MobileNav(): React.ReactElement {
             item.href.startsWith("/#") ? (
               <a
                 key={item.href}
-                href={item.href}
+                href={`${pathname}${item.href.slice(1)}`}
                 onClick={() => {
                   setOpen(false);
                 }}

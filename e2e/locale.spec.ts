@@ -30,18 +30,18 @@ test.describe("Locale – Switching & URL", () => {
     expect(await getLocale(page)).toBe("de");
   });
 
-  test("locale persists across page navigation", async ({ page }) => {
-    // Start on the German homepage
+  test("locale persists when scrolling to sections", async ({ page }) => {
     await page.goto("/de");
     await waitForHydration(page);
     expect(await getLocale(page)).toBe("de");
 
-    // Navigate to about via header link
-    await page.locator("header nav").getByRole("link").nth(1).click();
-    await waitForHydration(page);
+    await page
+      .locator("header nav")
+      .getByRole("link", { name: "About" })
+      .click();
+    await page.waitForTimeout(300);
 
-    // URL should still have /de prefix
-    await expect(page).toHaveURL(/\/de\/about$/);
+    await expect(page).toHaveURL(/\/de#about$/);
     expect(await getLocale(page)).toBe("de");
   });
 

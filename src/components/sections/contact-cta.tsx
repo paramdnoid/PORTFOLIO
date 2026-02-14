@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 
 import { ArrowRight } from "lucide-react";
 
-import { Link } from "@/i18n/navigation";
+import { siteConfig } from "@/config/site";
 import { FadeIn } from "@/components/shared/animated-wrapper";
 import { Button } from "@/components/ui/button";
 
@@ -13,14 +13,13 @@ import { Button } from "@/components/ui/button";
  * Call-to-action section encouraging visitors to get in touch.
  *
  * Centered layout with a heading, subtitle, and a prominent
- * button linking to the `/contact` page. Each element fades in
- * with a staggered delay.
+ * mailto button. Each element fades in with a staggered delay.
  */
 export function ContactCTA(): React.ReactElement {
   const t = useTranslations("contact");
 
   return (
-    <section className="py-24 px-4">
+    <section id="contact" className="py-24 px-4 scroll-mt-20">
       <div className="container mx-auto max-w-5xl text-center">
         <FadeIn>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
@@ -35,10 +34,10 @@ export function ContactCTA(): React.ReactElement {
         <FadeIn delay={0.2}>
           <div className="mt-8">
             <Button size="lg" asChild>
-              <Link href="/contact">
+              <a href={`mailto:${siteConfig.links.email}`}>
                 {t("title")}
                 <ArrowRight className="ml-2 size-4" />
-              </Link>
+              </a>
             </Button>
           </div>
         </FadeIn>

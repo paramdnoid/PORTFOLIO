@@ -6,7 +6,6 @@ import { useTranslations } from "next-intl";
 import { ArrowDown, Award, Calendar } from "lucide-react";
 
 import { certifications } from "@/config/experience";
-import { Link } from "@/i18n/navigation";
 import { FadeIn } from "@/components/shared/animated-wrapper";
 import { Button } from "@/components/ui/button";
 import {
@@ -85,7 +84,7 @@ export function Hero(): React.ReactElement {
                   <a href="#experience">{t("cta")}</a>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
-                  <Link href="/contact">{t("ctaSecondary")}</Link>
+                  <a href="#contact">{t("ctaSecondary")}</a>
                 </Button>
               </div>
             </FadeIn>

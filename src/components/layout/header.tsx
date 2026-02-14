@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
 import { navigationItems } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
@@ -20,6 +21,7 @@ import { ThemeToggle } from "@/components/layout/theme-toggle";
  */
 export function Header(): React.ReactElement {
   const t = useTranslations("navigation");
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -56,7 +58,7 @@ export function Header(): React.ReactElement {
             item.href.startsWith("/#") ? (
               <a
                 key={item.href}
-                href={item.href}
+                href={`${pathname}${item.href.slice(1)}`}
                 className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 {t(item.titleKey)}

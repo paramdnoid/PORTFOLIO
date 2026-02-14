@@ -17,19 +17,19 @@ test.describe("Smoke Tests", () => {
     await expect(links.first()).toBeVisible();
   });
 
-  test("about page loads", async ({ page }) => {
-    await page.goto("/about");
-    await expect(page.locator("main")).toBeVisible();
+  test("about section is visible on homepage", async ({ page }) => {
+    await page.goto("/#about");
+    await expect(page.locator("#about")).toBeVisible();
   });
 
-  test("projects page loads", async ({ page }) => {
-    await page.goto("/projects");
-    await expect(page.locator("main")).toBeVisible();
+  test("projects section is visible on homepage", async ({ page }) => {
+    await page.goto("/#projects");
+    await expect(page.locator("#projects")).toBeVisible();
   });
 
-  test("contact page loads", async ({ page }) => {
-    await page.goto("/contact");
-    await expect(page.locator("main")).toBeVisible();
+  test("contact section is visible on homepage", async ({ page }) => {
+    await page.goto("/#contact");
+    await expect(page.locator("#contact")).toBeVisible();
   });
 
   test("404 page displays for unknown routes", async ({ page }) => {

@@ -17,7 +17,7 @@ export function AboutPreview(): React.ReactElement {
   const t = useTranslations("about");
 
   return (
-    <section className="relative pt-24 pb-12 px-4">
+    <section id="about" className="relative pt-24 pb-12 px-4 scroll-mt-20">
       {/* Ambient glow for frosted glass depth */}
       <div
         aria-hidden="true"
