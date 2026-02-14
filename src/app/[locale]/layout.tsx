@@ -8,15 +8,17 @@ import {
   setRequestLocale,
 } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { routing } from "@/i18n/routing";
-import { getLocaleDirection } from "@/i18n/locales";
-import { fontSans, fontMono } from "@/lib/fonts";
+
 import { siteConfig } from "@/config/site";
-import { ThemeProvider } from "@/components/providers/theme-provider";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { Header } from "@/components/layout/header";
+import { fontMono, fontSans } from "@/lib/fonts";
+import { getLocaleDirection } from "@/i18n/locales";
+import { routing } from "@/i18n/routing";
 import { Footer } from "@/components/layout/footer";
+import { Header } from "@/components/layout/header";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+
 import "@/app/globals.css";
 
 type Props = {
@@ -68,7 +70,7 @@ export default async function LocaleLayout({
 }: Props): Promise<React.ReactElement> {
   const { locale } = await params;
 
-  if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
+  if (!routing.locales.includes(locale)) {
     notFound();
   }
 

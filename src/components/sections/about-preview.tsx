@@ -1,9 +1,10 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import { SectionHeading } from "@/components/shared/section-heading";
-import { FadeIn } from "@/components/shared/animated-wrapper";
 import React from "react";
+import { useTranslations } from "next-intl";
+
+import { FadeIn } from "@/components/shared/animated-wrapper";
+import { SectionHeading } from "@/components/shared/section-heading";
 
 export function AboutPreview(): React.ReactElement {
   const t = useTranslations("about");

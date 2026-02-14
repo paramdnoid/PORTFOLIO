@@ -1,5 +1,6 @@
-import type { SiteConfig } from "@/types";
 import { env } from "@/env";
+
+import type { SiteConfig } from "@/types";
 
 export const siteConfig = {
   name: "Andre",

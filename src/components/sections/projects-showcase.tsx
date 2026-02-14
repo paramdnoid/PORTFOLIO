@@ -1,13 +1,14 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
-import { featuredProjects } from "@/config/projects";
-import { SectionHeading } from "@/components/shared/section-heading";
-import { ProjectCard } from "@/components/shared/project-card";
-import { FadeIn, StaggerContainer } from "@/components/shared/animated-wrapper";
-import { Button } from "@/components/ui/button";
 import React from "react";
+import { useTranslations } from "next-intl";
+
+import { featuredProjects } from "@/config/projects";
+import { Link } from "@/i18n/navigation";
+import { FadeIn, StaggerContainer } from "@/components/shared/animated-wrapper";
+import { ProjectCard } from "@/components/shared/project-card";
+import { SectionHeading } from "@/components/shared/section-heading";
+import { Button } from "@/components/ui/button";
 
 export function ProjectsShowcase(): React.ReactElement {
   const t = useTranslations("projects");

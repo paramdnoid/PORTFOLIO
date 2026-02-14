@@ -2,14 +2,15 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
-import { SectionHeading } from "@/components/shared/section-heading";
-import { Badge } from "@/components/ui/badge";
+
+import { skillCategories } from "@/config/skills";
 import {
   FadeIn,
-  StaggerContainer,
   FadeInItem,
+  StaggerContainer,
 } from "@/components/shared/animated-wrapper";
-import { skillCategories } from "@/config/skills";
+import { SectionHeading } from "@/components/shared/section-heading";
+import { Badge } from "@/components/ui/badge";
 
 export function Skills(): React.ReactElement {
   const t = useTranslations("skills");

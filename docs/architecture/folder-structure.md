@@ -9,22 +9,32 @@ This document provides a full file tree of the project with inline explanations 
 ```
 PORTFOLIO/
 ├── docs/                    # Project documentation (this directory)
-├── messages/                 # Translation message files per locale
-├── scripts/                  # Build and utility scripts
-├── public/                   # Static assets (images, favicon, etc.)
-├── src/                      # Application source code
-├── docker/                   # Docker configuration
-├── test/                     # Test setup
-├── .github/                  # CI workflows and Dependabot
+├── e2e/                     # Playwright E2E tests
+├── messages/                # Translation message files per locale
+├── scripts/                 # Build and utility scripts
+├── public/                  # Static assets (images, favicon, etc.)
+├── src/                     # Application source code
+├── docker/                  # Docker configuration
+├── test/                    # Test setup
+├── .github/                 # CI workflows, Dependabot, PR template
+├── .vscode/                 # VS Code workspace settings and extensions
 ├── package.json
 ├── tsconfig.json
 ├── postcss.config.mjs
 ├── next.config.ts
-├── vitest.config.ts          # Test configuration
-├── eslint.config.ts          # ESLint flat config
-├── commitlint.config.ts      # Commit message linting
-├── .prettierrc.json          # Prettier configuration
-└── .editorconfig             # Editor settings
+├── vitest.config.ts         # Unit/component test configuration
+├── playwright.config.ts     # E2E test configuration
+├── eslint.config.ts         # ESLint flat config
+├── commitlint.config.ts     # Commit message linting
+├── .prettierrc.json         # Prettier configuration
+├── .editorconfig            # Editor settings
+├── .npmrc                   # npm configuration
+├── .nvmrc                   # Node.js version pinning
+├── .dockerignore            # Docker build exclusions
+├── CHANGELOG.md             # Version history (Keep a Changelog)
+├── CONTRIBUTING.md          # Contribution guidelines
+├── SECURITY.md              # Security policy
+└── LICENSE                  # MIT License
 ```
 
 ---
@@ -48,11 +58,27 @@ docs/
 │       ├── 004-tailwind-v4.md
 │       ├── 005-dark-mode-first.md
 │       └── 006-next-intl-i18n.md
-├── components/               # Component documentation (placeholder)
-├── styling/                  # Styling documentation (placeholder)
-├── i18n/                     # i18n documentation (placeholder)
-├── guides/                   # How-to guides (placeholder)
-└── changelog/                # Version history (placeholder)
+├── components/               # Component documentation
+├── styling/                  # Styling and design system documentation
+├── i18n/                     # Internationalization documentation
+├── guides/                   # How-to guides for development workflows
+└── changelog/                # Version history and release notes
+```
+
+---
+
+## e2e/
+
+Playwright end-to-end tests for browser automation. Covers smoke tests, navigation, locale switching, theming, and cross-cutting concerns.
+
+```
+e2e/
+├── fixtures.ts              # Shared test fixtures and helpers
+├── smoke.spec.ts            # Basic smoke tests
+├── navigation.spec.ts       # Page navigation tests
+├── locale.spec.ts           # Locale switching tests
+├── theme.spec.ts            # Dark/light theme tests
+└── cross-concern.spec.ts    # Cross-cutting concern tests
 ```
 
 ---
@@ -162,12 +188,18 @@ src/components/
 │   ├── sheet.tsx
 │   ├── sonner.tsx            # Toast component
 │   └── tooltip.tsx
+├── icons/                    # Custom SVG icon components
+│   ├── index.ts             # Barrel export
+│   ├── github.tsx
+│   └── linkedin.tsx
 ├── layout/                   # Layout components
 │   ├── footer.tsx
+│   ├── footer.test.tsx
 │   ├── header.tsx
 │   ├── locale-switcher.tsx
 │   ├── mobile-nav.tsx
-│   └── theme-toggle.tsx
+│   ├── theme-toggle.tsx
+│   └── theme-toggle.test.tsx
 ├── sections/                 # Page section components
 │   ├── about-preview.tsx
 │   ├── contact-cta.tsx
@@ -177,10 +209,13 @@ src/components/
 ├── shared/                   # Reusable domain components
 │   ├── animated-wrapper.tsx
 │   ├── project-card.tsx
-│   └── section-heading.tsx
+│   ├── section-heading.tsx
+│   └── section-heading.test.tsx
 └── providers/                # Context providers
     └── theme-provider.tsx
 ```
+
+**Testing convention:** Unit tests are co-located with their components as `*.test.tsx`. Accessibility tests use the `*.a11y.test.tsx` suffix.
 
 ---
 
@@ -246,6 +281,7 @@ The proxy lives at **`src/proxy.ts`** (Next.js 16 convention, replaces the forme
 ```ts
 // src/proxy.ts
 import createMiddleware from "next-intl/middleware";
+
 import { routing } from "./i18n/routing";
 
 export default createMiddleware(routing);
@@ -257,18 +293,32 @@ export const config = {
 
 ---
 
+## docker/
+
+Docker configuration for containerized builds and local development.
+
+```
+docker/
+├── Dockerfile               # Multi-stage production build
+└── docker-compose.yml       # Local development with security hardening
+```
+
+---
+
 ## Summary
 
-| Path                | Purpose                                 |
-| ------------------- | --------------------------------------- |
-| `docs/`             | Documentation                           |
-| `messages/`         | Translation JSON per locale             |
-| `scripts/`          | Build/utility scripts                   |
-| `src/app/[locale]/` | Pages and routes                        |
-| `src/components/`   | UI, layout, sections, shared, providers |
-| `src/config/`       | Site, navigation, projects, skills      |
-| `src/lib/`          | Utilities and fonts                     |
-| `src/types/`        | TypeScript types                        |
-| `src/i18n/`         | i18n routing and config                 |
-| `src/env.ts`        | Environment variable validation         |
-| `src/proxy.ts`      | Locale proxy                            |
+| Path                | Purpose                                        |
+| ------------------- | ---------------------------------------------- |
+| `docs/`             | Documentation                                  |
+| `e2e/`              | Playwright E2E tests                           |
+| `messages/`         | Translation JSON per locale                    |
+| `scripts/`          | Build/utility scripts                          |
+| `src/app/[locale]/` | Pages and routes                               |
+| `src/components/`   | UI, layout, icons, sections, shared, providers |
+| `src/config/`       | Site, navigation, projects, skills             |
+| `src/lib/`          | Utilities and fonts                            |
+| `src/types/`        | TypeScript types                               |
+| `src/i18n/`         | i18n routing and config                        |
+| `src/env.ts`        | Environment variable validation                |
+| `src/proxy.ts`      | Locale proxy                                   |
+| `docker/`           | Dockerfile and Compose config                  |

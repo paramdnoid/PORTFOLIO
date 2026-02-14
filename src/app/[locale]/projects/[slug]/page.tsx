@@ -1,8 +1,10 @@
-import type { Metadata } from "next";
 import type { ReactElement } from "react";
-import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
+
 import { projects } from "@/config/projects";
+
 import { ProjectDetailContent } from "./project-detail-content";
 
 type Props = {

@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "EditorConfig.EditorConfig",
+    "mikestead.dotenv",
+    "streetsidesoftware.code-spell-checker",
+    "ms-playwright.playwright"
+  ]
+}

@@ -1,14 +1,15 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+
 import { navigationItems } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
-import { ThemeToggle } from "@/components/layout/theme-toggle";
+import { cn } from "@/lib/utils";
+import { Link } from "@/i18n/navigation";
 import { LocaleSwitcher } from "@/components/layout/locale-switcher";
 import { MobileNav } from "@/components/layout/mobile-nav";
-import { cn } from "@/lib/utils";
-import React, { useEffect, useState } from "react";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 
 export function Header(): React.ReactElement {
   const t = useTranslations("navigation");
@@ -19,7 +20,9 @@ export function Header(): React.ReactElement {
       setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return (): void => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (

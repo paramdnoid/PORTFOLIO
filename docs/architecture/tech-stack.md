@@ -29,6 +29,7 @@ This document lists all technologies used in the Portfolio project, with version
 | **Zod**                            | 4.x     | Schema validation for environment variables                                               | [zod.dev](https://zod.dev)                                                                     |
 | **Vitest**                         | 4.x     | Unit/component testing framework                                                          | [vitest.dev](https://vitest.dev)                                                               |
 | **Testing Library**                | 16.x    | React component testing utilities (`@testing-library/react`)                              | [testing-library.com](https://testing-library.com)                                             |
+| **Playwright**                     | 1.x     | End-to-end testing framework for browser automation                                       | [playwright.dev](https://playwright.dev)                                                       |
 | **Prettier**                       | 3.x     | Code formatting                                                                           | [prettier.io](https://prettier.io)                                                             |
 | **Husky**                          | 9.x     | Git hooks for pre-commit linting and formatting                                           | [typicode.github.io/husky](https://typicode.github.io/husky)                                   |
 | **commitlint**                     | 20.x    | Enforce Conventional Commits format                                                       | [commitlint.js.org](https://commitlint.js.org)                                                 |
@@ -48,7 +49,7 @@ This document lists all technologies used in the Portfolio project, with version
 | **Theming**    | next-themes                         |
 | **i18n**       | next-intl                           |
 | **Typography** | Geist font                          |
-| **Testing**    | Vitest, Testing Library             |
+| **Testing**    | Vitest, Testing Library, Playwright |
 | **Tooling**    | ESLint, Prettier, Husky, commitlint |
 
 ---
@@ -57,4 +58,4 @@ This document lists all technologies used in the Portfolio project, with version
 
 - Versions are approximate; exact versions are defined in `package.json`.
 - Run `npm list` or inspect `package.json` for the current locked versions.
-- Major upgrades should be documented in the [Changelog](../changelog/).
+- Major upgrades should be documented in the [Changelog](../../CHANGELOG.md).

@@ -1,0 +1,16 @@
+# Default owner for all files
+* @andre
+
+# CI/CD and DevOps
+/.github/         @andre
+/docker/          @andre
+Dockerfile        @andre
+
+# Core configuration
+next.config.ts    @andre
+tsconfig.json     @andre
+eslint.config.ts  @andre
+package.json      @andre
+
+# Source code
+/src/             @andre

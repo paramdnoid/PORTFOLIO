@@ -2,14 +2,15 @@
 
 import type { ReactElement } from "react";
 import { useTranslations } from "next-intl";
-import type { Project } from "@/types";
-import { SectionHeading } from "@/components/shared/section-heading";
-import { ProjectCard } from "@/components/shared/project-card";
-import { StaggerContainer } from "@/components/shared/animated-wrapper";
 
-interface ProjectsPageContentProps {
+import type { Project } from "@/types";
+import { StaggerContainer } from "@/components/shared/animated-wrapper";
+import { ProjectCard } from "@/components/shared/project-card";
+import { SectionHeading } from "@/components/shared/section-heading";
+
+type ProjectsPageContentProps = {
   projects: Project[];
-}
+};
 
 export function ProjectsPageContent({
   projects,

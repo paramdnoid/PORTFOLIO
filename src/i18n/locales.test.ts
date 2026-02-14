@@ -1,12 +1,13 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+
 import {
-  locales,
-  localeCodes,
   defaultLocale,
-  rtlLocales,
   getLocaleConfig,
   getLocaleDirection,
   getLocalesByRegion,
+  localeCodes,
+  locales,
+  rtlLocales,
 } from "./locales";
 
 describe("locales", () => {

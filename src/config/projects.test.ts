@@ -1,5 +1,6 @@
-import { describe, it, expect } from "vitest";
-import { projects, featuredProjects } from "./projects";
+import { describe, expect, it } from "vitest";
+
+import { featuredProjects, projects } from "./projects";
 
 describe("projects config", () => {
   it("exports a non-empty array of projects", () => {

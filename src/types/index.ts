@@ -1,4 +1,4 @@
-export interface SiteConfig {
+export type SiteConfig = {
   name: string;
   description: string;
   url: string;
@@ -8,29 +8,29 @@ export interface SiteConfig {
     linkedin: string;
     email: string;
   };
-}
+};
 
-export interface NavItem {
+export type NavItem = {
   /** Translation key, e.g. "home" — resolved via useTranslations("navigation") */
   titleKey: string;
   href: string;
-}
+};
 
-export interface Project {
+export type Project = {
   title: string;
   description: string;
-  longDescription?: string;
+  longDescription?: string | undefined;
   slug: string;
   tags: string[];
   image: string;
-  liveUrl?: string;
-  githubUrl?: string;
+  liveUrl?: string | undefined;
+  githubUrl?: string | undefined;
   featured: boolean;
   year: number;
-}
+};
 
 /** Metadata for a supported locale */
-export interface LocaleConfig {
+export type LocaleConfig = {
   /** ISO 639-1 code, e.g. "de" */
   code: string;
   /** Native name, e.g. "Deutsch" */
@@ -43,4 +43,4 @@ export interface LocaleConfig {
   region: "europe" | "asia" | "middle-east" | "africa" | "americas" | "oceania";
   /** Whether translations are complete */
   translationComplete: boolean;
-}
+};

@@ -2,12 +2,9 @@
 
 Documentation for the design system and styling approach.
 
-This section will contain:
-
-- Tailwind v4 theme configuration
-- CSS variables and design tokens
-- Dark/light mode implementation
-- Typography (Geist font usage)
-- Spacing and layout conventions
+| Document                                      | Description                                         |
+| --------------------------------------------- | --------------------------------------------------- |
+| [Design System](design-system.md)             | OKLCH colors, typography, spacing, CSS variables    |
+| [Responsive Strategy](responsive-strategy.md) | Breakpoints, mobile-first approach, layout patterns |
 
 See [ADR 004](../architecture/decisions/004-tailwind-v4.md) and [ADR 005](../architecture/decisions/005-dark-mode-first.md) for styling-related decisions.

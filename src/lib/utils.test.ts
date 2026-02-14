@@ -1,4 +1,5 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+
 import { cn } from "./utils";
 
 describe("cn utility", () => {
@@ -7,7 +8,8 @@ describe("cn utility", () => {
   });
 
   it("handles conditional classes", () => {
-    expect(cn("base", false && "hidden", "visible")).toBe("base visible");
+    const hide = false as boolean;
+    expect(cn("base", hide && "hidden", "visible")).toBe("base visible");
   });
 
   it("merges conflicting Tailwind classes", () => {

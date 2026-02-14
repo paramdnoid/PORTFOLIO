@@ -1,8 +1,13 @@
 "use client";
 
+import React, { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { useRouter, usePathname } from "@/i18n/navigation";
-import { getLocalesByRegion, getLocaleConfig } from "@/i18n/locales";
+
+import { Check, Languages } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+import { getLocaleConfig, getLocalesByRegion } from "@/i18n/locales";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Command,
@@ -17,10 +22,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Check, Languages } from "lucide-react";
-import { useState } from "react";
-import { cn } from "@/lib/utils";
-import React from "react";
 
 export function LocaleSwitcher(): React.ReactElement {
   const currentLocale = useLocale();
@@ -64,7 +65,9 @@ export function LocaleSwitcher(): React.ReactElement {
                   <CommandItem
                     key={locale.code}
                     value={`${locale.nativeName} ${locale.englishName} ${locale.code}`}
-                    onSelect={() => switchLocale(locale.code)}
+                    onSelect={() => {
+                      switchLocale(locale.code);
+                    }}
                     className="flex items-center justify-between"
                   >
                     <span className="truncate">

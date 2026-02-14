@@ -1,8 +1,10 @@
 import type { ReactElement } from "react";
 import { getTranslations } from "next-intl/server";
+
+import { ArrowLeft } from "lucide-react";
+
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
 
 export default async function ProjectNotFound(): Promise<ReactElement> {
   const t = await getTranslations("common");

@@ -1,11 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+
+import { Menu } from "lucide-react";
+
 import { navigationItems } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
+import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import {
   Sheet,
   SheetContent,
@@ -13,9 +17,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Separator } from "@/components/ui/separator";
-import { Menu } from "lucide-react";
-import React from "react";
 
 export function MobileNav(): React.ReactElement {
   const t = useTranslations("navigation");
@@ -44,7 +45,9 @@ export function MobileNav(): React.ReactElement {
             <Link
               key={item.href}
               href={item.href}
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                setOpen(false);
+              }}
               className="rounded-md px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
             >
               {t(item.titleKey)}

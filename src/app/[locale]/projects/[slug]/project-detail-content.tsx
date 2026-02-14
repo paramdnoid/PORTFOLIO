@@ -2,16 +2,19 @@
 
 import type { ReactElement } from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+
+import { ArrowLeft, ExternalLink } from "lucide-react";
+
 import type { Project } from "@/types";
+import { Link } from "@/i18n/navigation";
+import { GitHubIcon } from "@/components/icons";
+import { FadeIn } from "@/components/shared/animated-wrapper";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { FadeIn } from "@/components/shared/animated-wrapper";
-import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 
-interface ProjectDetailContentProps {
+type ProjectDetailContentProps = {
   project: Project;
-}
+};
 
 export function ProjectDetailContent({
   project,
@@ -78,7 +81,7 @@ export function ProjectDetailContent({
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Github className="mr-2 size-4" />
+                  <GitHubIcon className="mr-2 size-4" />
                   {t("viewCode")}
                 </a>
               </Button>

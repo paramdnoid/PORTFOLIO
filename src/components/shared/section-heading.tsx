@@ -1,13 +1,14 @@
 "use client";
 
 import React from "react";
+
 import { FadeIn } from "@/components/shared/animated-wrapper";
 
-interface SectionHeadingProps {
+type SectionHeadingProps = {
   title: string;
-  subtitle?: string;
-  className?: string;
-}
+  subtitle?: string | undefined;
+  className?: string | undefined;
+};
 
 export function SectionHeading({
   title,

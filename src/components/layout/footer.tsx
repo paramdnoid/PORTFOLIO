@@ -2,8 +2,11 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
+
+import { Mail } from "lucide-react";
+
 import { siteConfig } from "@/config/site";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { GitHubIcon, LinkedInIcon } from "@/components/icons";
 
 export function Footer(): React.ReactElement {
   const t = useTranslations("footer");
@@ -22,7 +25,7 @@ export function Footer(): React.ReactElement {
               className="text-muted-foreground transition-colors hover:text-foreground"
               aria-label="GitHub"
             >
-              <Github className="size-5" />
+              <GitHubIcon className="size-5" />
             </a>
             <a
               href={siteConfig.links.linkedin}
@@ -31,7 +34,7 @@ export function Footer(): React.ReactElement {
               className="text-muted-foreground transition-colors hover:text-foreground"
               aria-label="LinkedIn"
             >
-              <Linkedin className="size-5" />
+              <LinkedInIcon className="size-5" />
             </a>
             <a
               href={`mailto:${siteConfig.links.email}`}

@@ -34,6 +34,7 @@ dist/
 coverage/
 .nyc_output/
 playwright-report/
+blob-report/
 test-results/
 
 # =============================================

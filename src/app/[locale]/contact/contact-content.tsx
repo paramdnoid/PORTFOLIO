@@ -2,11 +2,13 @@
 
 import type { ReactElement } from "react";
 import { useTranslations } from "next-intl";
-import { SectionHeading } from "@/components/shared/section-heading";
-import { FadeIn } from "@/components/shared/animated-wrapper";
-import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/config/site";
+
 import { Mail } from "lucide-react";
+
+import { siteConfig } from "@/config/site";
+import { FadeIn } from "@/components/shared/animated-wrapper";
+import { SectionHeading } from "@/components/shared/section-heading";
+import { Button } from "@/components/ui/button";
 
 export function ContactPageContent(): ReactElement {
   const t = useTranslations("contact");

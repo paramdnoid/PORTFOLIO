@@ -1,9 +1,10 @@
 import { getRequestConfig } from "next-intl/server";
+
 import { routing } from "./routing";
 
-interface MessagesModule {
+type MessagesModule = {
   default: Record<string, unknown>;
-}
+};
 
 const NAMESPACES = [
   "common",
@@ -20,10 +21,7 @@ const NAMESPACES = [
 export default getRequestConfig(async ({ requestLocale }) => {
   let locale = await requestLocale;
 
-  if (
-    !locale ||
-    !routing.locales.includes(locale as (typeof routing.locales)[number])
-  ) {
+  if (!locale || !routing.locales.includes(locale)) {
     locale = routing.defaultLocale;
   }
 
@@ -73,10 +71,13 @@ function deepMerge(
       typeof sourceVal === "object" &&
       !Array.isArray(sourceVal)
     ) {
-      result[key] = deepMerge(
-        (targetVal as Record<string, unknown>) ?? {},
-        sourceVal as Record<string, unknown>,
-      );
+      const targetObj =
+        targetVal != null &&
+        typeof targetVal === "object" &&
+        !Array.isArray(targetVal)
+          ? (targetVal as Record<string, unknown>)
+          : {};
+      result[key] = deepMerge(targetObj, sourceVal as Record<string, unknown>);
     } else {
       result[key] = sourceVal;
     }

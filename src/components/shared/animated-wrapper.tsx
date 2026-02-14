@@ -1,7 +1,9 @@
 "use client";
 
 import React from "react";
+
 import { motion, type Variants } from "motion/react";
+
 import { cn } from "@/lib/utils";
 
 const fadeInUp: Variants = {
@@ -9,11 +11,11 @@ const fadeInUp: Variants = {
   visible: { opacity: 1, y: 0 },
 };
 
-interface AnimatedProps {
+type AnimatedProps = {
   children: React.ReactNode;
-  className?: string;
-  delay?: number;
-}
+  className?: string | undefined;
+  delay?: number | undefined;
+};
 
 export function FadeIn({
   children,

@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
 import React from "react";
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+
 import { AboutPreview } from "@/components/sections/about-preview";
 import { Skills } from "@/components/sections/skills";
 

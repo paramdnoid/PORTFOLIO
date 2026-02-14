@@ -1,8 +1,16 @@
 "use client";
 
-import Image from "next/image";
+import React from "react";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
+
+import { ExternalLink } from "lucide-react";
+
 import type { Project } from "@/types";
+import { GitHubIcon } from "@/components/icons";
+import { FadeInItem } from "@/components/shared/animated-wrapper";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -10,15 +18,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
-import { FadeInItem } from "@/components/shared/animated-wrapper";
-import React from "react";
 
-interface ProjectCardProps {
+type ProjectCardProps = {
   project: Project;
-}
+};
 
 export function ProjectCard({ project }: ProjectCardProps): React.ReactElement {
   const t = useTranslations("projects");
@@ -81,7 +84,7 @@ export function ProjectCard({ project }: ProjectCardProps): React.ReactElement {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Github className="mr-1.5 size-3.5" />
+                  <GitHubIcon className="mr-1.5 size-3.5" />
                   {t("viewCode")}
                 </a>
               </Button>

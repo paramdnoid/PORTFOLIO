@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/config/site";
+
 import { projects } from "@/config/projects";
+import { siteConfig } from "@/config/site";
 
 const staticRoutes = ["/", "/about", "/projects", "/contact"];
 

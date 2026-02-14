@@ -35,9 +35,10 @@ Documentation for UI components and their usage.
 
 Design system, theming, and CSS conventions.
 
-| Document            | Description                                                                   |
-| ------------------- | ----------------------------------------------------------------------------- |
-| [Styling](styling/) | Styling guidelines and theme documentation (placeholder for future expansion) |
+| Document                                              | Description                                      |
+| ----------------------------------------------------- | ------------------------------------------------ |
+| [Design System](styling/design-system.md)             | OKLCH colors, typography, spacing, CSS variables |
+| [Responsive Strategy](styling/responsive-strategy.md) | Breakpoints, mobile-first, responsive patterns   |
 
 ---
 
@@ -75,9 +76,9 @@ How-to guides and tutorials for common tasks.
 
 Project history and release notes.
 
-| Document                            | Description                         |
-| ----------------------------------- | ----------------------------------- |
-| [Changelog](changelog/CHANGELOG.md) | Version history and notable changes |
+| Document                     | Description                         |
+| ---------------------------- | ----------------------------------- |
+| [Changelog](../CHANGELOG.md) | Version history and notable changes |
 
 ---
 

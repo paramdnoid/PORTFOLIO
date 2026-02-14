@@ -6,7 +6,8 @@ updates:
       interval: weekly
       day: monday
     open-pull-requests-limit: 10
-    reviewers: []
+    reviewers:
+      - andre
     labels:
       - dependencies
     commit-message:

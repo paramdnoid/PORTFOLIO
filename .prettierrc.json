@@ -7,5 +7,20 @@
   "bracketSpacing": true,
   "arrowParens": "always",
   "endOfLine": "lf",
-  "plugins": []
+  "plugins": ["@ianvs/prettier-plugin-sort-imports"],
+  "importOrder": [
+    "^react",
+    "^next",
+    "",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^@/types(.*)",
+    "^@/config(.*)",
+    "^@/lib(.*)",
+    "^@/i18n(.*)",
+    "^@/components(.*)",
+    "^@/app(.*)",
+    "",
+    "^[./]"
+  ]
 }

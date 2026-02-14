@@ -4,5 +4,9 @@ build/
 dist/
 node_modules/
 coverage/
+playwright-report/
+blob-report/
+test-results/
 *.tsbuildinfo
+*.css
 package-lock.json
