@@ -13,12 +13,18 @@ PORTFOLIO/
 ├── scripts/                  # Build and utility scripts
 ├── public/                   # Static assets (images, favicon, etc.)
 ├── src/                      # Application source code
-├── middleware.ts             # (Not at root; see src/middleware.ts)
+├── docker/                   # Docker configuration
+├── test/                     # Test setup
+├── .github/                  # CI workflows and Dependabot
 ├── package.json
 ├── tsconfig.json
-├── tailwind.config.ts       # (Tailwind v4 may use CSS-based config)
 ├── postcss.config.mjs
-└── next.config.ts
+├── next.config.ts
+├── vitest.config.ts          # Test configuration
+├── eslint.config.ts          # ESLint flat config
+├── commitlint.config.ts      # Commit message linting
+├── .prettierrc.json          # Prettier configuration
+└── .editorconfig             # Editor settings
 ```
 
 ---
@@ -89,19 +95,18 @@ scripts/
 
 ## src/
 
-Application source code. Contains the Next.js app, components, config, lib, types, hooks, styles, and i18n setup.
+Application source code. Contains the Next.js app, components, config, lib, types, and i18n setup.
 
 ```
 src/
 ├── app/                      # Next.js App Router
 ├── components/               # React components
 ├── config/                   # Site and app configuration
-├── hooks/                    # Custom React hooks
 ├── i18n/                     # Internationalization setup
 ├── lib/                      # Utilities and shared logic
-├── styles/                   # Global styles (if any beyond app/globals.css)
 ├── types/                    # TypeScript type definitions
-└── middleware.ts            # next-intl middleware for locale handling
+├── env.ts                    # Environment variable validation (zod)
+└── proxy.ts                  # next-intl proxy for locale handling
 ```
 
 ---
@@ -115,9 +120,13 @@ src/app/
 ├── layout.tsx                # Root layout (minimal; delegates to [locale])
 ├── globals.css               # Global CSS and Tailwind imports
 ├── not-found.tsx             # 404 page
+├── robots.ts                 # robots.txt generation
+├── sitemap.ts                # Sitemap generation
 └── [locale]/                 # Locale-scoped routes (dynamic segment)
     ├── layout.tsx            # Locale layout: providers, Header, Footer, main
     ├── page.tsx              # Home page
+    ├── loading.tsx           # Loading UI (Suspense fallback)
+    ├── error.tsx             # Error boundary
     ├── about/
     │   └── page.tsx
     ├── contact/
@@ -128,7 +137,8 @@ src/app/
         ├── projects-content.tsx
         └── [slug]/
             ├── page.tsx
-            └── project-detail-content.tsx
+            ├── project-detail-content.tsx
+            └── not-found.tsx   # Project-specific 404
 ```
 
 **Pattern:** Pages are thin wrappers; content is often extracted to `*-content.tsx` for clarity and reuse.
@@ -142,34 +152,31 @@ React components organized by role.
 ```
 src/components/
 ├── ui/                       # Primitive UI components (shadcn/ui)
+│   ├── badge.tsx
 │   ├── button.tsx
 │   ├── card.tsx
+│   ├── command.tsx           # cmdk command palette
 │   ├── dialog.tsx
-│   ├── dropdown-menu.tsx
 │   ├── popover.tsx
-│   ├── scroll-area.tsx
 │   ├── separator.tsx
 │   ├── sheet.tsx
-│   ├── tooltip.tsx
-│   ├── command.tsx           # cmdk command palette
-│   ├── badge.tsx
-│   └── sonner.tsx            # Toast component
+│   ├── sonner.tsx            # Toast component
+│   └── tooltip.tsx
 ├── layout/                   # Layout components
-│   ├── header.tsx
 │   ├── footer.tsx
+│   ├── header.tsx
 │   ├── locale-switcher.tsx
-│   ├── theme-toggle.tsx
-│   └── mobile-nav.tsx
+│   ├── mobile-nav.tsx
+│   └── theme-toggle.tsx
 ├── sections/                 # Page section components
-│   ├── hero.tsx
-│   ├── skills.tsx
 │   ├── about-preview.tsx
+│   ├── contact-cta.tsx
+│   ├── hero.tsx
 │   ├── projects-showcase.tsx
-│   └── contact-cta.tsx
+│   └── skills.tsx
 ├── shared/                   # Reusable domain components
-│   ├── project-card.tsx
-│   ├── skill-badge.tsx
 │   ├── animated-wrapper.tsx
+│   ├── project-card.tsx
 │   └── section-heading.tsx
 └── providers/                # Context providers
     └── theme-provider.tsx
@@ -183,9 +190,10 @@ Static configuration for the site. No React components.
 
 ```
 src/config/
-├── site.ts                   # Site name, URL, metadata defaults
 ├── navigation.ts             # Nav links structure
-└── projects.ts               # Project data for portfolio
+├── projects.ts               # Project data for portfolio
+├── site.ts                   # Site name, URL, metadata defaults
+└── skills.ts                 # Skills data for skills section
 ```
 
 ---
@@ -196,9 +204,8 @@ Utility functions and shared logic.
 
 ```
 src/lib/
-├── utils.ts                  # cn() and other helpers
 ├── fonts.ts                  # Geist font configuration
-└── metadata.ts               # Metadata helpers (if used)
+└── utils.ts                  # cn() and other helpers
 ```
 
 ---
@@ -210,29 +217,6 @@ TypeScript type definitions and interfaces.
 ```
 src/types/
 └── index.ts                  # Shared types (Project, NavItem, etc.)
-```
-
----
-
-## src/hooks/
-
-Custom React hooks.
-
-```
-src/hooks/
-├── use-scroll-spy.ts         # Scroll spy for nav highlighting
-└── use-media-query.ts        # Responsive breakpoint detection
-```
-
----
-
-## src/styles/
-
-Additional styles beyond `app/globals.css`. May be empty if all styles live in globals or component-scoped Tailwind.
-
-```
-src/styles/
-└── (additional CSS if needed)
 ```
 
 ---
@@ -251,16 +235,16 @@ src/i18n/
 
 ---
 
-## middleware.ts
+## proxy.ts
 
-The middleware lives at **`src/middleware.ts`** (Next.js convention). It uses `next-intl` to:
+The proxy lives at **`src/proxy.ts`** (Next.js 16 convention, replaces the former `middleware.ts`). It uses `next-intl` to:
 
 - Detect and set the locale from the URL or `Accept-Language`
 - Redirect to the appropriate locale prefix when needed
 - Exclude static files and API routes via the matcher config
 
 ```ts
-// src/middleware.ts
+// src/proxy.ts
 import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
 
@@ -275,16 +259,16 @@ export const config = {
 
 ## Summary
 
-| Path | Purpose |
-|------|---------|
-| `docs/` | Documentation |
-| `messages/` | Translation JSON per locale |
-| `scripts/` | Build/utility scripts |
-| `src/app/[locale]/` | Pages and routes |
-| `src/components/` | UI, layout, sections, shared, providers |
-| `src/config/` | Site and app config |
-| `src/lib/` | Utilities and fonts |
-| `src/types/` | TypeScript types |
-| `src/hooks/` | Custom hooks |
-| `src/i18n/` | i18n routing and config |
-| `src/middleware.ts` | Locale middleware |
+| Path                | Purpose                                 |
+| ------------------- | --------------------------------------- |
+| `docs/`             | Documentation                           |
+| `messages/`         | Translation JSON per locale             |
+| `scripts/`          | Build/utility scripts                   |
+| `src/app/[locale]/` | Pages and routes                        |
+| `src/components/`   | UI, layout, sections, shared, providers |
+| `src/config/`       | Site, navigation, projects, skills      |
+| `src/lib/`          | Utilities and fonts                     |
+| `src/types/`        | TypeScript types                        |
+| `src/i18n/`         | i18n routing and config                 |
+| `src/env.ts`        | Environment variable validation         |
+| `src/proxy.ts`      | Locale proxy                            |

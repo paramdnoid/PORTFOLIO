@@ -8,7 +8,7 @@
 
 The Portfolio aims to support a **large number of locales** (~128) for maximum reach. Requirements include:
 
-- **Next.js App Router** compatibility (RSC, Server Components, middleware)
+- **Next.js App Router** compatibility (RSC, Server Components, proxy)
 - **Namespace splitting** — Load only the messages needed per page/component to keep bundles small
 - **Fallback strategy** — Missing translations should fall back to English (or another base locale) via deep merge
 - **RTL support** — Right-to-left languages (e.g., Arabic, Hebrew) must be supported
@@ -17,12 +17,12 @@ The Portfolio aims to support a **large number of locales** (~128) for maximum r
 
 Alternatives considered:
 
-| Option | Pros | Cons |
-|--------|------|------|
-| **next-i18next** | Mature, widely used | Built for Pages Router; App Router support is less mature |
-| **react-intl** | Feature-rich, FormatJS ecosystem | No built-in Next.js integration; manual setup for RSC |
-| **Custom solution** | Full control | High effort; reinventing i18n (routing, loading, RTL) is error-prone |
-| **next-intl** | App Router native, RSC support, namespaces, RTL | Newer than next-i18next; smaller community |
+| Option              | Pros                                            | Cons                                                                 |
+| ------------------- | ----------------------------------------------- | -------------------------------------------------------------------- |
+| **next-i18next**    | Mature, widely used                             | Built for Pages Router; App Router support is less mature            |
+| **react-intl**      | Feature-rich, FormatJS ecosystem                | No built-in Next.js integration; manual setup for RSC                |
+| **Custom solution** | Full control                                    | High effort; reinventing i18n (routing, loading, RTL) is error-prone |
+| **next-intl**       | App Router native, RSC support, namespaces, RTL | Newer than next-i18next; smaller community                           |
 
 ## Decision
 
@@ -34,9 +34,9 @@ Key reasons:
 2. **Namespace splitting** — Messages are split by namespace (e.g., `hero`, `navigation`, `projects`). Each page loads only what it needs.
 3. **Deep merge fallback to EN** — Missing keys in a locale fall back to English (or configured default) via deep object merge. No empty strings for incomplete translations.
 4. **RTL support** — `dir` attribute and locale direction are handled. Layout and components can adapt for RTL.
-5. **App Router native** — Middleware, `getTranslations`, `getMessages`, `NextIntlClientProvider` integrate with App Router and RSC.
+5. **App Router native** — Proxy, `getTranslations`, `getMessages`, `NextIntlClientProvider` integrate with App Router and RSC.
 6. **Type-safe** — TypeScript can infer message keys when configured correctly.
-7. **Middleware integration** — Locale detection, redirects, and prefix handling are built-in.
+7. **Proxy integration** — Locale detection, redirects, and prefix handling are built-in.
 
 ## Consequences
 

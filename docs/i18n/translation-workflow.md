@@ -31,7 +31,7 @@ You can use AI or translation APIs to speed up translation:
 ### Example Prompt
 
 ```
-Translate the following JSON to German. Keep all keys unchanged. 
+Translate the following JSON to German. Keep all keys unchanged.
 Only translate the string values. Maintain the same JSON structure.
 
 {
@@ -96,13 +96,13 @@ echo "All locales have complete key sets"
 
 ## Best Practices
 
-| Practice | Description |
-|----------|-------------|
-| **Consistent terminology** | Use the same translation for repeated terms (e.g. "View Project") across namespaces |
-| **Context-aware** | Provide context when using AI (e.g. "This is a portfolio website hero section") |
-| **Metadata quality** | `metadata.json` affects SEO — write concise, keyword-rich titles and descriptions |
-| **RTL testing** | For RTL locales, verify layout and text alignment |
-| **Placeholder preservation** | Keep placeholders like `{name}` in interpolation strings unchanged |
+| Practice                     | Description                                                                         |
+| ---------------------------- | ----------------------------------------------------------------------------------- |
+| **Consistent terminology**   | Use the same translation for repeated terms (e.g. "View Project") across namespaces |
+| **Context-aware**            | Provide context when using AI (e.g. "This is a portfolio website hero section")     |
+| **Metadata quality**         | `metadata.json` affects SEO — write concise, keyword-rich titles and descriptions   |
+| **RTL testing**              | For RTL locales, verify layout and text alignment                                   |
+| **Placeholder preservation** | Keep placeholders like `{name}` in interpolation strings unchanged                  |
 
 ---
 

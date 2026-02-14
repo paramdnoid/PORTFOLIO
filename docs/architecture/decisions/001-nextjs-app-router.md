@@ -31,7 +31,7 @@ Use **Next.js 16** with the **App Router** as the primary framework.
 - The `[locale]` dynamic segment handles internationalization at the routing level
 - React Server Components are the default; Client Components are used only when needed
 - `generateStaticParams` enables static generation for all locale routes
-- Middleware handles locale detection and redirects before the request reaches the App Router
+- The proxy handles locale detection and redirects before the request reaches the App Router
 
 ## Consequences
 

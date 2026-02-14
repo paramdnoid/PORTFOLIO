@@ -63,25 +63,25 @@ The Portfolio is a Next.js 16 application with:
 
 ### Key Directories
 
-| Directory | Purpose |
-|-----------|---------|
-| `src/app/[locale]/` | Pages and layouts (locale-aware) |
-| `src/components/` | Reusable UI components |
-| `src/config/` | Projects, navigation, site config |
-| `src/i18n/` | Locale config, routing, request config |
-| `messages/` | Translation JSON files per locale |
-| `public/` | Static assets (images, etc.) |
+| Directory           | Purpose                                |
+| ------------------- | -------------------------------------- |
+| `src/app/[locale]/` | Pages and layouts (locale-aware)       |
+| `src/components/`   | Reusable UI components                 |
+| `src/config/`       | Projects, navigation, site config      |
+| `src/i18n/`         | Locale config, routing, request config |
+| `messages/`         | Translation JSON files per locale      |
+| `public/`           | Static assets (images, etc.)           |
 
 ---
 
 ## Key Commands
 
-| Command | Description |
-|---------|--------------|
-| `npm run dev` | Start development server (hot reload) |
-| `npm run build` | Production build |
+| Command         | Description                           |
+| --------------- | ------------------------------------- |
+| `npm run dev`   | Start development server (hot reload) |
+| `npm run build` | Production build                      |
 | `npm run start` | Start production server (after build) |
-| `npm run lint` | Run ESLint |
+| `npm run lint`  | Run ESLint                            |
 
 ### Generate Locale Message Files
 

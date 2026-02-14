@@ -14,8 +14,8 @@ flowchart TB
         A[HTTP Request]
     end
 
-    subgraph Middleware["Middleware Layer"]
-        B[next-intl Middleware]
+    subgraph Proxy["Proxy Layer"]
+        B[next-intl Proxy]
     end
 
     subgraph AppRouter["App Router"]
@@ -51,7 +51,7 @@ flowchart TB
 
 ### Flow Description
 
-1. **Middleware** — The `next-intl` middleware intercepts requests to handle locale detection, redirects (e.g., `/` → `/en` or default locale), and locale prefix management. It runs before any page is rendered.
+1. **Proxy** — The `next-intl` proxy intercepts requests to handle locale detection, redirects (e.g., `/` → `/en` or default locale), and locale prefix management. It runs before any page is rendered.
 
 2. **App Router [locale]** — Next.js App Router routes requests into the `[locale]` dynamic segment. Each locale (e.g., `en`, `es`, `fr`) shares the same route structure but receives locale-specific content.
 

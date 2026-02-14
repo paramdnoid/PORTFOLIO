@@ -3,8 +3,9 @@
 import { useTranslations } from "next-intl";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { FadeIn } from "@/components/shared/animated-wrapper";
+import React from "react";
 
-export function AboutPreview() {
+export function AboutPreview(): React.ReactElement {
   const t = useTranslations("about");
 
   return (

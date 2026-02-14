@@ -96,12 +96,12 @@ Set `featured: true` to show the project in the homepage "Featured" section:
 
 ## Quick Reference
 
-| Step | Action |
-|------|--------|
-| 1 | Add project object to `src/config/projects.ts` |
-| 2 | Add image to `public/projects/` |
-| 3 | Detail page auto-generates at `/{locale}/projects/{slug}` |
-| 4 | Set `featured: true` for homepage showcase |
+| Step | Action                                                    |
+| ---- | --------------------------------------------------------- |
+| 1    | Add project object to `src/config/projects.ts`            |
+| 2    | Add image to `public/projects/`                           |
+| 3    | Detail page auto-generates at `/{locale}/projects/{slug}` |
+| 4    | Set `featured: true` for homepage showcase                |
 
 ---
 

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import type { Project } from "@/types";
 import {
@@ -13,17 +14,29 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
 import { FadeInItem } from "@/components/shared/animated-wrapper";
+import React from "react";
 
 interface ProjectCardProps {
   project: Project;
 }
 
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({ project }: ProjectCardProps): React.ReactElement {
   const t = useTranslations("projects");
 
   return (
     <FadeInItem>
       <Card className="group overflow-hidden transition-colors hover:border-foreground/20">
+        {/* Project Image */}
+        <div className="relative aspect-video w-full overflow-hidden">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            priority={project.featured}
+          />
+        </div>
         <CardHeader>
           <div className="flex items-start justify-between gap-2">
             <div className="space-y-1">

@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactElement } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { Project } from "@/types";
@@ -12,7 +13,9 @@ interface ProjectDetailContentProps {
   project: Project;
 }
 
-export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
+export function ProjectDetailContent({
+  project,
+}: ProjectDetailContentProps): ReactElement {
   const t = useTranslations("projects");
   const tCommon = useTranslations("common");
 

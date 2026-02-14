@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion, type Variants } from "motion/react";
 import { cn } from "@/lib/utils";
 
@@ -14,7 +15,11 @@ interface AnimatedProps {
   delay?: number;
 }
 
-export function FadeIn({ children, delay = 0, className }: AnimatedProps) {
+export function FadeIn({
+  children,
+  delay = 0,
+  className,
+}: AnimatedProps): React.ReactElement {
   return (
     <motion.div
       variants={fadeInUp}
@@ -33,7 +38,10 @@ export function FadeIn({ children, delay = 0, className }: AnimatedProps) {
   );
 }
 
-export function StaggerContainer({ children, className }: AnimatedProps) {
+export function StaggerContainer({
+  children,
+  className,
+}: AnimatedProps): React.ReactElement {
   return (
     <motion.div
       initial="hidden"
@@ -47,7 +55,10 @@ export function StaggerContainer({ children, className }: AnimatedProps) {
   );
 }
 
-export function FadeInItem({ children, className }: Omit<AnimatedProps, "delay">) {
+export function FadeInItem({
+  children,
+  className,
+}: Omit<AnimatedProps, "delay">): React.ReactElement {
   return (
     <motion.div variants={fadeInUp} className={cn(className)}>
       {children}

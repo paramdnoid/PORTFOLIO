@@ -15,8 +15,9 @@ import {
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 import { Menu } from "lucide-react";
+import React from "react";
 
-export function MobileNav() {
+export function MobileNav(): React.ReactElement {
   const t = useTranslations("navigation");
   const tCommon = useTranslations("common");
   const [open, setOpen] = useState(false);
@@ -24,7 +25,12 @@ export function MobileNav() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="ghost" size="icon" className="size-9" aria-label={tCommon("menu")}>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="size-9"
+          aria-label={tCommon("menu")}
+        >
           <Menu className="size-5" />
         </Button>
       </SheetTrigger>

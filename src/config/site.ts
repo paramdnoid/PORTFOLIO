@@ -1,13 +1,14 @@
 import type { SiteConfig } from "@/types";
+import { env } from "@/env";
 
 export const siteConfig = {
   name: "Andre",
   description: "Full-Stack Developer Portfolio",
-  url: "https://andre.dev",
-  ogImage: "/og-image.png",
+  url: env.NEXT_PUBLIC_SITE_URL,
+  ogImage: "/og-image.svg",
   links: {
     github: "https://github.com/andre",
     linkedin: "https://linkedin.com/in/andre",
     email: "hello@andre.dev",
   },
-} as const satisfies SiteConfig;
+} satisfies SiteConfig;

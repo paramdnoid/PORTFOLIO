@@ -15,12 +15,12 @@ The project needs a component library for:
 
 Alternatives considered:
 
-| Option | Pros | Cons |
-|--------|------|------|
-| **Material UI** | Mature, comprehensive, theming | Heavy bundle, opinionated design, harder to customize deeply |
-| **Chakra UI** | Good DX, accessible | v2 has different styling model; v3 still evolving |
-| **Radix UI directly** | Unstyled, accessible, flexible | Requires building all styling from scratch |
-| **shadcn/ui** | Copy-paste, Tailwind-native, Radix-based | Components live in repo; no npm package to upgrade |
+| Option                | Pros                                     | Cons                                                         |
+| --------------------- | ---------------------------------------- | ------------------------------------------------------------ |
+| **Material UI**       | Mature, comprehensive, theming           | Heavy bundle, opinionated design, harder to customize deeply |
+| **Chakra UI**         | Good DX, accessible                      | v2 has different styling model; v3 still evolving            |
+| **Radix UI directly** | Unstyled, accessible, flexible           | Requires building all styling from scratch                   |
+| **shadcn/ui**         | Copy-paste, Tailwind-native, Radix-based | Components live in repo; no npm package to upgrade           |
 
 ## Decision
 

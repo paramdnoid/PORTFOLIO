@@ -19,19 +19,16 @@ interface SectionHeadingProps {
 }
 ```
 
-| Prop       | Type    | Required | Description                          |
-|------------|---------|----------|--------------------------------------|
-| `title`    | string  | Yes      | Main heading text                    |
-| `subtitle` | string  | No       | Small uppercase label above the title |
-| `className`| string  | No       | Additional CSS classes               |
+| Prop        | Type   | Required | Description                           |
+| ----------- | ------ | -------- | ------------------------------------- |
+| `title`     | string | Yes      | Main heading text                     |
+| `subtitle`  | string | No       | Small uppercase label above the title |
+| `className` | string | No       | Additional CSS classes                |
 
 ### Usage
 
 ```tsx
-<SectionHeading
-  title={t("title")}
-  subtitle={t("subtitle")}
-/>
+<SectionHeading title={t("title")} subtitle={t("subtitle")} />
 ```
 
 ### Styling
@@ -93,45 +90,6 @@ Uses `projects` namespace:
 
 ---
 
-## SkillBadge
-
-**File:** `src/components/shared/skill-badge.tsx`  
-**Type:** Server Component
-
-A simple badge displaying a skill name. Can optionally show category.
-
-### Props
-
-```tsx
-interface SkillBadgeProps {
-  skill: Skill;
-}
-```
-
-`Skill` type:
-
-```tsx
-interface Skill {
-  name: string;
-  category: "frontend" | "backend" | "tools" | "other";
-  level: "expert" | "advanced" | "intermediate";
-}
-```
-
-### Implementation
-
-Uses shadcn `Badge` with `variant="secondary"`:
-
-```tsx
-<Badge variant="secondary" className="px-3 py-1 text-sm">
-  {skill.name}
-</Badge>
-```
-
-The `category` and `level` are available for future enhancements (e.g., color coding, tooltips).
-
----
-
 ## AnimatedWrapper
 
 **File:** `src/components/shared/animated-wrapper.tsx`  
@@ -151,11 +109,11 @@ Single-element fade-in with optional delay.
 </FadeIn>
 ```
 
-| Prop       | Type   | Default | Description                    |
-|------------|--------|---------|--------------------------------|
-| `children` | ReactNode | —    | Content to animate             |
-| `delay`    | number | 0       | Delay before animation starts  |
-| `className`| string | —       | Additional CSS classes        |
+| Prop        | Type      | Default | Description                   |
+| ----------- | --------- | ------- | ----------------------------- |
+| `children`  | ReactNode | —       | Content to animate            |
+| `delay`     | number    | 0       | Delay before animation starts |
+| `className` | string    | —       | Additional CSS classes        |
 
 - **Animation:** Opacity 0→1, y: 24→0
 - **Trigger:** `whileInView` with `viewport={{ once: true, margin: "-100px" }}`
@@ -176,10 +134,10 @@ Container that staggers child animations.
 </StaggerContainer>
 ```
 
-| Prop       | Type   | Description                    |
-|------------|--------|--------------------------------|
-| `children` | ReactNode | Must be `FadeInItem` components |
-| `className`| string | Layout classes (e.g., grid)    |
+| Prop        | Type      | Description                     |
+| ----------- | --------- | ------------------------------- |
+| `children`  | ReactNode | Must be `FadeInItem` components |
+| `className` | string    | Layout classes (e.g., grid)     |
 
 - **Stagger:** `staggerChildren: 0.1` — each child animates 0.1s after the previous
 - **Trigger:** `whileInView` with `viewport={{ once: true, margin: "-100px" }}`
@@ -206,6 +164,7 @@ const fadeInUp: Variants = {
 ### Usage Patterns
 
 1. **Sequential delays** — Multiple `FadeIn` with increasing `delay`:
+
    ```tsx
    <FadeIn>Greeting</FadeIn>
    <FadeIn delay={0.1}>Name</FadeIn>
@@ -213,6 +172,7 @@ const fadeInUp: Variants = {
    ```
 
 2. **Staggered list** — `StaggerContainer` + `FadeInItem`:
+
    ```tsx
    <StaggerContainer className="grid gap-6 md:grid-cols-2">
      {projects.map((p) => (
@@ -229,7 +189,9 @@ const fadeInUp: Variants = {
      <h3>Category</h3>
      <StaggerContainer className="flex flex-wrap gap-2">
        {skills.map((s) => (
-         <FadeInItem key={s}><Badge>{s}</Badge></FadeInItem>
+         <FadeInItem key={s}>
+           <Badge>{s}</Badge>
+         </FadeInItem>
        ))}
      </StaggerContainer>
    </FadeIn>

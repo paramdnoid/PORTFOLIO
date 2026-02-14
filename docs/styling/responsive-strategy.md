@@ -6,14 +6,14 @@ This document describes the breakpoint system, mobile-first approach, and key re
 
 The project uses Tailwind's default breakpoints:
 
-| Prefix | Min Width | Typical Usage |
-|--------|-----------|---------------|
-| (default) | 0px | Mobile-first base |
-| `sm` | 640px | Large phones, small tablets |
-| `md` | 768px | Tablets |
-| `lg` | 1024px | Laptops |
-| `xl` | 1280px | Desktops |
-| `2xl` | 1536px | Large desktops |
+| Prefix    | Min Width | Typical Usage               |
+| --------- | --------- | --------------------------- |
+| (default) | 0px       | Mobile-first base           |
+| `sm`      | 640px     | Large phones, small tablets |
+| `md`      | 768px     | Tablets                     |
+| `lg`      | 1024px    | Laptops                     |
+| `xl`      | 1280px    | Desktops                    |
+| `2xl`     | 1536px    | Large desktops              |
 
 ### Usage
 
@@ -30,16 +30,16 @@ Styles are written for the smallest viewport first; larger breakpoints add or ov
 
 ```tsx
 // Base = mobile
-className="flex flex-col gap-4"
+className = "flex flex-col gap-4";
 
 // sm and up = horizontal layout
-className="flex flex-col gap-4 sm:flex-row sm:gap-6"
+className = "flex flex-col gap-4 sm:flex-row sm:gap-6";
 
 // Base = 1 column
-className="grid gap-6"
+className = "grid gap-6";
 
 // md and up = 2 columns
-className="grid gap-6 md:grid-cols-2"
+className = "grid gap-6 md:grid-cols-2";
 ```
 
 ## Container
@@ -61,10 +61,10 @@ Content width is constrained for readability:
 
 ### Header: Desktop Nav vs. Hamburger
 
-| Viewport | Navigation | Actions |
-|----------|------------|---------|
-| &lt; md | Hidden | Hamburger (MobileNav) |
-| ≥ md | Inline nav links | LocaleSwitcher, ThemeToggle |
+| Viewport | Navigation       | Actions                     |
+| -------- | ---------------- | --------------------------- |
+| &lt; md  | Hidden           | Hamburger (MobileNav)       |
+| ≥ md     | Inline nav links | LocaleSwitcher, ThemeToggle |
 
 ```tsx
 {/* Desktop nav - hidden below md */}
@@ -81,9 +81,9 @@ Content width is constrained for readability:
 ### Project Grid
 
 | Viewport | Columns |
-|----------|---------|
-| &lt; md | 1 |
-| ≥ md | 2 |
+| -------- | ------- |
+| &lt; md  | 1       |
+| ≥ md     | 2       |
 
 ```tsx
 <StaggerContainer className="grid gap-6 md:grid-cols-2">
@@ -96,9 +96,9 @@ Content width is constrained for readability:
 ### Skills Grid
 
 | Viewport | Columns |
-|----------|---------|
-| &lt; sm | 1 |
-| ≥ sm | 2 |
+| -------- | ------- |
+| &lt; sm  | 1       |
+| ≥ sm     | 2       |
 
 ```tsx
 <div className="grid gap-8 sm:grid-cols-2">
@@ -108,10 +108,10 @@ Content width is constrained for readability:
 
 ### Footer Layout
 
-| Viewport | Layout |
-|----------|--------|
-| &lt; sm | Stacked (flex-col) |
-| ≥ sm | Row (flex-row) |
+| Viewport | Layout             |
+| -------- | ------------------ |
+| &lt; sm  | Stacked (flex-col) |
+| ≥ sm     | Row (flex-row)     |
 
 ```tsx
 <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
@@ -122,10 +122,10 @@ Content width is constrained for readability:
 
 ### LocaleSwitcher Label
 
-| Viewport | Display |
-|----------|---------|
-| &lt; sm | Locale code (e.g., "EN") |
-| ≥ sm | Full native name (e.g., "English") |
+| Viewport | Display                            |
+| -------- | ---------------------------------- |
+| &lt; sm  | Locale code (e.g., "EN")           |
+| ≥ sm     | Full native name (e.g., "English") |
 
 ```tsx
 <span className="hidden sm:inline">{currentConfig?.nativeName}</span>
@@ -134,11 +134,11 @@ Content width is constrained for readability:
 
 ### Typography Scaling
 
-| Element | Mobile | sm | lg |
-|---------|--------|-----|-----|
-| Hero name | text-5xl | text-6xl | text-7xl |
-| Hero role | text-2xl | text-3xl | — |
-| Section heading | text-3xl | text-4xl | — |
+| Element         | Mobile   | sm       | lg       |
+| --------------- | -------- | -------- | -------- |
+| Hero name       | text-5xl | text-6xl | text-7xl |
+| Hero role       | text-2xl | text-3xl | —        |
+| Section heading | text-3xl | text-4xl | —        |
 
 ```tsx
 <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">

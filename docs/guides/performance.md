@@ -8,12 +8,12 @@ This document outlines performance targets, strategies, and monitoring for the P
 
 Aim for perfect scores across all Core Web Vitals:
 
-| Metric | Target | Description |
-|--------|--------|--------------|
-| **Performance** | 100 | LCP, FID, CLS, TBT, Speed Index |
-| **Accessibility** | 100 | ARIA, contrast, semantics, keyboard |
-| **Best Practices** | 100 | HTTPS, console errors, deprecated APIs |
-| **SEO** | 100 | Meta tags, crawlability, mobile-friendly |
+| Metric             | Target | Description                              |
+| ------------------ | ------ | ---------------------------------------- |
+| **Performance**    | 100    | LCP, FID, CLS, TBT, Speed Index          |
+| **Accessibility**  | 100    | ARIA, contrast, semantics, keyboard      |
+| **Best Practices** | 100    | HTTPS, console errors, deprecated APIs   |
+| **SEO**            | 100    | Meta tags, crawlability, mobile-friendly |
 
 Run Lighthouse in Chrome DevTools (Lighthouse tab) or via CLI:
 
@@ -54,8 +54,8 @@ import Image from "next/image";
   alt="E-commerce Platform"
   width={800}
   height={450}
-  priority={false}  // Use true for above-the-fold images
-/>
+  priority={false} // Use true for above-the-fold images
+/>;
 ```
 
 Benefits:
@@ -112,14 +112,14 @@ npm install -D @next/bundle-analyzer
 
 ## Best Practices Summary
 
-| Area | Practice |
-|------|----------|
-| **Components** | Server by default; client only when needed |
-| **Images** | Always use `next/image` |
-| **Fonts** | Use `next/font` (Geist) |
-| **i18n** | Static generation for all locales |
-| **Animations** | Use Motion; prefer `transform` and `opacity` |
-| **Third-party** | Lazy load non-critical scripts |
+| Area            | Practice                                     |
+| --------------- | -------------------------------------------- |
+| **Components**  | Server by default; client only when needed   |
+| **Images**      | Always use `next/image`                      |
+| **Fonts**       | Use `next/font` (Geist)                      |
+| **i18n**        | Static generation for all locales            |
+| **Animations**  | Use Motion; prefer `transform` and `opacity` |
+| **Third-party** | Lazy load non-critical scripts               |
 
 ---
 

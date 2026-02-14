@@ -6,11 +6,11 @@ This document describes the Git workflow, commit conventions, and code review pr
 
 ## Git Branch Strategy
 
-| Branch | Purpose |
-|--------|---------|
-| `main` | Production-ready code; protected |
-| `feature/*` | New features (e.g. `feature/add-blog-page`) |
-| `fix/*` | Bug fixes (e.g. `fix/contact-form-validation`) |
+| Branch      | Purpose                                        |
+| ----------- | ---------------------------------------------- |
+| `main`      | Production-ready code; protected               |
+| `feature/*` | New features (e.g. `feature/add-blog-page`)    |
+| `fix/*`     | Bug fixes (e.g. `fix/contact-form-validation`) |
 
 ### Workflow
 
@@ -38,15 +38,15 @@ Use [Conventional Commits](https://www.conventionalcommits.org/) for clear, mach
 
 ### Types
 
-| Type | Use For |
-|------|---------|
-| `feat` | New feature |
-| `fix` | Bug fix |
-| `docs` | Documentation only |
-| `style` | Formatting, whitespace (no code change) |
+| Type       | Use For                                                 |
+| ---------- | ------------------------------------------------------- |
+| `feat`     | New feature                                             |
+| `fix`      | Bug fix                                                 |
+| `docs`     | Documentation only                                      |
+| `style`    | Formatting, whitespace (no code change)                 |
 | `refactor` | Code change that neither fixes a bug nor adds a feature |
-| `test` | Adding or updating tests |
-| `chore` | Build, tooling, dependencies |
+| `test`     | Adding or updating tests                                |
+| `chore`    | Build, tooling, dependencies                            |
 
 ### Examples
 
@@ -77,13 +77,13 @@ Fix any reported issues. Consider enabling a pre-commit hook (e.g. via Husky) to
 
 When reviewing a PR, verify:
 
-| Area | Checklist |
-|------|-----------|
-| **TypeScript** | No `any`; types are correct; no type errors |
-| **Translations** | New user-facing strings use i18n; keys added to all relevant locale files (or at least `en`) |
-| **RSC vs Client** | Server components by default; `"use client"` only when needed (hooks, interactivity) |
-| **Responsive** | Layout works on mobile, tablet, desktop |
-| **Accessibility** | Semantic HTML; ARIA where needed; keyboard navigation; color contrast |
+| Area              | Checklist                                                                                    |
+| ----------------- | -------------------------------------------------------------------------------------------- |
+| **TypeScript**    | No `any`; types are correct; no type errors                                                  |
+| **Translations**  | New user-facing strings use i18n; keys added to all relevant locale files (or at least `en`) |
+| **RSC vs Client** | Server components by default; `"use client"` only when needed (hooks, interactivity)         |
+| **Responsive**    | Layout works on mobile, tablet, desktop                                                      |
+| **Accessibility** | Semantic HTML; ARIA where needed; keyboard navigation; color contrast                        |
 
 ### RSC vs Client Components
 

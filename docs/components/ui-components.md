@@ -4,20 +4,18 @@ The application uses [shadcn/ui](https://ui.shadcn.com/) for base UI primitives.
 
 ## Installed Components
 
-| Component       | File              | Description                                      |
-|----------------|-------------------|--------------------------------------------------|
-| **Button**     | `button.tsx`      | Primary actions, variants (default, outline, ghost, etc.) |
-| **Card**       | `card.tsx`        | Content containers with header, content, footer   |
-| **Badge**      | `badge.tsx`       | Labels, tags, status indicators                   |
-| **Separator**  | `separator.tsx`   | Horizontal or vertical dividers                   |
-| **Tooltip**    | `tooltip.tsx`     | Hover hints (via `TooltipProvider`)              |
-| **Sonner**     | `sonner.tsx`      | Toast notifications (`Toaster`)                  |
-| **Sheet**      | `sheet.tsx`       | Slide-in panels (e.g., MobileNav)                |
-| **Dropdown Menu** | `dropdown-menu.tsx` | Context menus, actions                        |
-| **Scroll Area**| `scroll-area.tsx` | Custom scrollable regions                        |
-| **Command**    | `command.tsx`     | Command palette, searchable lists (cmdk)          |
-| **Popover**    | `popover.tsx`     | Floating content (e.g., LocaleSwitcher)          |
-| **Dialog**     | `dialog.tsx`      | Modal dialogs                                    |
+| Component     | File            | Description                                               |
+| ------------- | --------------- | --------------------------------------------------------- |
+| **Button**    | `button.tsx`    | Primary actions, variants (default, outline, ghost, etc.) |
+| **Card**      | `card.tsx`      | Content containers with header, content, footer           |
+| **Badge**     | `badge.tsx`     | Labels, tags, status indicators                           |
+| **Separator** | `separator.tsx` | Horizontal or vertical dividers                           |
+| **Tooltip**   | `tooltip.tsx`   | Hover hints (via `TooltipProvider`)                       |
+| **Sonner**    | `sonner.tsx`    | Toast notifications (`Toaster`)                           |
+| **Sheet**     | `sheet.tsx`     | Slide-in panels (e.g., MobileNav)                         |
+| **Command**   | `command.tsx`   | Command palette, searchable lists (cmdk)                  |
+| **Popover**   | `popover.tsx`   | Floating content (e.g., LocaleSwitcher)                   |
+| **Dialog**    | `dialog.tsx`    | Modal dialogs                                             |
 
 ## Location
 
@@ -30,9 +28,7 @@ src/components/ui/
 ├── card.tsx
 ├── command.tsx
 ├── dialog.tsx
-├── dropdown-menu.tsx
 ├── popover.tsx
-├── scroll-area.tsx
 ├── separator.tsx
 ├── sheet.tsx
 ├── sonner.tsx

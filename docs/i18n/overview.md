@@ -12,8 +12,8 @@ flowchart TB
         A[User visits URL]
     end
 
-    subgraph Middleware["Middleware (locale detection)"]
-        B[next-intl middleware]
+    subgraph Proxy["Proxy (locale detection)"]
+        B[next-intl proxy]
         C{Valid locale?}
         D[Redirect to /locale/path]
         E[Continue with locale]
@@ -63,13 +63,13 @@ flowchart TB
 
 ## Architecture Summary
 
-| Stage | Location | Responsibility |
-|-------|----------|----------------|
-| **Middleware** | `src/middleware.ts` | Detects locale from URL/headers, redirects invalid requests |
-| **[locale] segment** | `src/app/[locale]/` | Dynamic route segment; all pages live under a locale |
-| **i18n/request.ts** | `src/i18n/request.ts` | Loads messages for the current locale, applies deep merge fallback |
-| **NextIntlClientProvider** | `src/app/[locale]/layout.tsx` | Provides messages to the React tree |
-| **Components** | Throughout `src/` | Use `useTranslations()` (client) or `getTranslations()` (server) |
+| Stage                      | Location                      | Responsibility                                                     |
+| -------------------------- | ----------------------------- | ------------------------------------------------------------------ |
+| **Proxy**                  | `src/proxy.ts`                | Detects locale from URL/headers, redirects invalid requests        |
+| **[locale] segment**       | `src/app/[locale]/`           | Dynamic route segment; all pages live under a locale               |
+| **i18n/request.ts**        | `src/i18n/request.ts`         | Loads messages for the current locale, applies deep merge fallback |
+| **NextIntlClientProvider** | `src/app/[locale]/layout.tsx` | Provides messages to the React tree                                |
+| **Components**             | Throughout `src/`             | Use `useTranslations()` (client) or `getTranslations()` (server)   |
 
 ---
 
@@ -89,24 +89,28 @@ The project uses [next-intl](https://next-intl-docs.vercel.app/) for internation
 
 Messages are organized into **9 namespaces**, each stored as a JSON file under `messages/{locale}/`:
 
-| Namespace | File | Purpose |
-|-----------|------|---------|
-| `common` | `common.json` | Shared UI strings (buttons, labels, actions) |
-| `navigation` | `navigation.json` | Nav links (home, about, projects, contact) |
-| `hero` | `hero.json` | Hero section (greeting, name, role, tagline, CTAs) |
-| `about` | `about.json` | About section content |
-| `projects` | `projects.json` | Projects section and project cards |
-| `skills` | `skills.json` | Skills categories and labels |
-| `contact` | `contact.json` | Contact form and messages |
-| `footer` | `footer.json` | Footer content |
-| `metadata` | `metadata.json` | Page titles and descriptions (SEO) |
+| Namespace    | File              | Purpose                                            |
+| ------------ | ----------------- | -------------------------------------------------- |
+| `common`     | `common.json`     | Shared UI strings (buttons, labels, actions)       |
+| `navigation` | `navigation.json` | Nav links (home, about, projects, contact)         |
+| `hero`       | `hero.json`       | Hero section (greeting, name, role, tagline, CTAs) |
+| `about`      | `about.json`      | About section content                              |
+| `projects`   | `projects.json`   | Projects section and project cards                 |
+| `skills`     | `skills.json`     | Skills categories and labels                       |
+| `contact`    | `contact.json`    | Contact form and messages                          |
+| `footer`     | `footer.json`     | Footer content                                     |
+| `metadata`   | `metadata.json`   | Page titles and descriptions (SEO)                 |
 
 Example usage:
 
 ```tsx
 // Client component
 const t = useTranslations("hero");
-return <h1>{t("greeting")} {t("name")}</h1>;
+return (
+  <h1>
+    {t("greeting")} {t("name")}
+  </h1>
+);
 
 // Server component
 const t = await getTranslations({ locale, namespace: "metadata" });
@@ -125,6 +129,7 @@ For non-English locales, messages are **deep merged** with English as the fallba
 4. Result: Missing keys in `de` show English text; translated keys override
 
 This ensures:
+
 - **No broken UI** — Incomplete translations still display readable text
 - **Progressive translation** — You can translate one namespace at a time
 - **Consistency** — New keys added to English automatically appear until translated

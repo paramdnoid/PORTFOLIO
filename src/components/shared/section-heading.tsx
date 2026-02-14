@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { FadeIn } from "@/components/shared/animated-wrapper";
 
 interface SectionHeadingProps {
@@ -12,7 +13,7 @@ export function SectionHeading({
   title,
   subtitle,
   className,
-}: SectionHeadingProps) {
+}: SectionHeadingProps): React.ReactElement {
   return (
     <FadeIn className={className}>
       <div className="mb-12 space-y-2">

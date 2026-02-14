@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactElement } from "react";
 import { useTranslations } from "next-intl";
 import type { Project } from "@/types";
 import { SectionHeading } from "@/components/shared/section-heading";
@@ -10,7 +11,9 @@ interface ProjectsPageContentProps {
   projects: Project[];
 }
 
-export function ProjectsPageContent({ projects }: ProjectsPageContentProps) {
+export function ProjectsPageContent({
+  projects,
+}: ProjectsPageContentProps): ReactElement {
   const t = useTranslations("projects");
 
   return (

@@ -5,8 +5,9 @@ import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/shared/animated-wrapper";
 import { ArrowDown } from "lucide-react";
+import React from "react";
 
-export function Hero() {
+export function Hero(): React.ReactElement {
   const t = useTranslations("hero");
 
   return (

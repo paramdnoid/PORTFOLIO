@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useTranslations } from "next-intl";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Badge } from "@/components/ui/badge";
@@ -8,22 +9,9 @@ import {
   StaggerContainer,
   FadeInItem,
 } from "@/components/shared/animated-wrapper";
+import { skillCategories } from "@/config/skills";
 
-const skillCategories = {
-  frontend: [
-    "React",
-    "Next.js",
-    "TypeScript",
-    "Tailwind CSS",
-    "HTML/CSS",
-    "Vue.js",
-  ],
-  backend: ["Node.js", "Python", "PostgreSQL", "MongoDB", "REST APIs", "GraphQL"],
-  tools: ["Git", "Docker", "Vercel", "GitHub Actions", "Linux", "Figma"],
-  other: ["Agile/Scrum", "CI/CD", "Testing", "Performance", "SEO", "a11y"],
-};
-
-export function Skills() {
+export function Skills(): React.ReactElement {
   const t = useTranslations("skills");
 
   const categories = [

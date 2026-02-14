@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import React from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ContactPageContent } from "./contact-content";
 
@@ -15,7 +16,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function ContactPage({ params }: Props) {
+export default async function ContactPage({
+  params,
+}: Props): Promise<React.ReactElement> {
   const { locale } = await params;
   setRequestLocale(locale);
 

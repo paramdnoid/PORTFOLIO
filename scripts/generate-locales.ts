@@ -5,7 +5,13 @@
  * Usage: npx tsx scripts/generate-locales.ts
  */
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from "fs";
+import {
+  readFileSync,
+  writeFileSync,
+  mkdirSync,
+  existsSync,
+  readdirSync,
+} from "fs";
 import { join } from "path";
 
 // Read locale codes from locales.ts by parsing the file
@@ -14,7 +20,13 @@ const localesFileContent = readFileSync(localesFilePath, "utf-8");
 
 // Extract all locale codes using regex
 const codeMatches = localesFileContent.matchAll(/code:\s*"([a-z]{2,3})"/g);
-const localeCodes = Array.from(codeMatches, (m) => m[1]!);
+const localeCodes = Array.from(codeMatches, (m) => {
+  const code = m[1];
+  if (code === undefined) {
+    throw new Error("Failed to extract locale code from match");
+  }
+  return code;
+});
 
 const messagesDir = join(__dirname, "../messages");
 const enDir = join(messagesDir, "en");

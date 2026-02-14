@@ -1,6 +1,7 @@
+import type React from "react";
 import Link from "next/link";
 
-export default function NotFound() {
+export default function NotFound(): React.ReactElement {
   return (
     <html lang="en">
       <body className="flex min-h-screen items-center justify-center bg-black text-white">

@@ -1,9 +1,11 @@
+"use client";
+
+import React from "react";
 import { useTranslations } from "next-intl";
 import { siteConfig } from "@/config/site";
 import { Github, Linkedin, Mail } from "lucide-react";
 
-
-export function Footer() {
+export function Footer(): React.ReactElement {
   const t = useTranslations("footer");
   const currentYear = new Date().getFullYear();
 

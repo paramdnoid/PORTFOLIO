@@ -28,7 +28,7 @@ type Props = {
 
 export default async function NewPage({ params }: Props) {
   const { locale } = await params;
-  setRequestLocale(locale);  // Required for static generation
+  setRequestLocale(locale); // Required for static generation
 
   return (
     <div>
@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: Props) {
   const t = await getTranslations({ locale, namespace: "metadata" });
 
   return {
-    title: t("newPageTitle"),      // Add key to metadata.json
+    title: t("newPageTitle"), // Add key to metadata.json
     description: t("newPageDescription"),
   };
 }
@@ -87,7 +87,7 @@ export const navigationItems: NavItem[] = [
   { titleKey: "home", href: "/" },
   { titleKey: "about", href: "/about" },
   { titleKey: "projects", href: "/projects" },
-  { titleKey: "newPage", href: "/new-page" },  // Add this
+  { titleKey: "newPage", href: "/new-page" }, // Add this
   { titleKey: "contact", href: "/contact" },
 ];
 ```
@@ -124,14 +124,14 @@ This ensures the link preserves the current locale (e.g. `/de/new-page` when vie
 
 ## Quick Reference
 
-| Step | Action |
-|------|--------|
-| 1 | Create `src/app/[locale]/new-page/` directory |
-| 2 | Create `page.tsx` with `setRequestLocale(locale)` |
-| 3 | Add `generateMetadata()` with `getTranslations("metadata")` |
-| 4 | Add translation keys to all locale message files |
-| 5 | Add nav item to `src/config/navigation.ts` |
-| 6 | Use `Link` from `@/i18n/navigation` for locale-aware links |
+| Step | Action                                                      |
+| ---- | ----------------------------------------------------------- |
+| 1    | Create `src/app/[locale]/new-page/` directory               |
+| 2    | Create `page.tsx` with `setRequestLocale(locale)`           |
+| 3    | Add `generateMetadata()` with `getTranslations("metadata")` |
+| 4    | Add translation keys to all locale message files            |
+| 5    | Add nav item to `src/config/navigation.ts`                  |
+| 6    | Use `Link` from `@/i18n/navigation` for locale-aware links  |
 
 ---
 

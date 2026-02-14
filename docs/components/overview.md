@@ -41,7 +41,6 @@ flowchart TB
     subgraph Shared["Shared Components"]
         SectionHeading["SectionHeading"]
         ProjectCard["ProjectCard"]
-        SkillBadge["SkillBadge"]
         AnimatedWrapper["AnimatedWrapper"]
     end
 
@@ -88,12 +87,12 @@ flowchart TB
 - **kebab-case** for all component file names (e.g., `section-heading.tsx`, `project-card.tsx`, `theme-toggle.tsx`).
 - One component per file; the file name matches the primary export.
 
-| Component Name   | File Path                          |
-|-----------------|------------------------------------|
-| `SectionHeading`| `src/components/shared/section-heading.tsx` |
-| `ProjectCard`   | `src/components/shared/project-card.tsx`    |
-| `ThemeToggle`   | `src/components/layout/theme-toggle.tsx`    |
-| `LocaleSwitcher`| `src/components/layout/locale-switcher.tsx` |
+| Component Name   | File Path                                   |
+| ---------------- | ------------------------------------------- |
+| `SectionHeading` | `src/components/shared/section-heading.tsx` |
+| `ProjectCard`    | `src/components/shared/project-card.tsx`    |
+| `ThemeToggle`    | `src/components/layout/theme-toggle.tsx`    |
+| `LocaleSwitcher` | `src/components/layout/locale-switcher.tsx` |
 
 ## Server vs. Client Component Strategy
 
@@ -109,11 +108,11 @@ The application follows a **default Server Component** approach with explicit cl
 
 Add `"use client"` at the top of a file **only** when the component requires:
 
-| Requirement | Example |
-|-------------|---------|
-| **Interactivity** | `useState`, `useEffect`, event handlers beyond simple links |
-| **Browser APIs** | `window`, `localStorage`, `matchMedia` |
-| **Animations** | Framer Motion / Motion library |
+| Requirement            | Example                                                                     |
+| ---------------------- | --------------------------------------------------------------------------- |
+| **Interactivity**      | `useState`, `useEffect`, event handlers beyond simple links                 |
+| **Browser APIs**       | `window`, `localStorage`, `matchMedia`                                      |
+| **Animations**         | Framer Motion / Motion library                                              |
 | **Theme/Locale hooks** | `useTheme`, `useLocale`, `useTranslations` (when used for dynamic behavior) |
 
 ### Examples
@@ -155,7 +154,11 @@ interface SectionHeadingProps {
   className?: string;
 }
 
-export function SectionHeading({ title, subtitle, className }: SectionHeadingProps) {
+export function SectionHeading({
+  title,
+  subtitle,
+  className,
+}: SectionHeadingProps) {
   // ...
 }
 ```
@@ -187,7 +190,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 src/components/
 ├── layout/          # Header, Footer, MobileNav, ThemeToggle, LocaleSwitcher
 ├── sections/        # Hero, AboutPreview, ProjectsShowcase, Skills, ContactCTA
-├── shared/          # SectionHeading, ProjectCard, SkillBadge, AnimatedWrapper
+├── shared/          # SectionHeading, ProjectCard, AnimatedWrapper
 ├── ui/              # shadcn/ui primitives (button, card, badge, etc.)
 └── providers/       # ThemeProvider
 ```

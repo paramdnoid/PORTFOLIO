@@ -64,12 +64,12 @@ Vercel will:
 
 The application can be deployed to any platform that supports Next.js:
 
-| Platform | Notes |
-|----------|-------|
-| **Netlify** | Next.js plugin; similar to Vercel |
-| **Railway** | Supports Node.js; use `npm run build` and `npm run start` |
-| **Docker** | Use `node:20-alpine`; run `npm run build && npm run start` |
-| **Self-hosted** | Node.js server; `npm run build` then `npm run start` |
+| Platform        | Notes                                                      |
+| --------------- | ---------------------------------------------------------- |
+| **Netlify**     | Next.js plugin; similar to Vercel                          |
+| **Railway**     | Supports Node.js; use `npm run build` and `npm run start`  |
+| **Docker**      | Use `node:20-alpine`; run `npm run build && npm run start` |
+| **Self-hosted** | Node.js server; `npm run build` then `npm run start`       |
 
 Ensure the platform supports:
 

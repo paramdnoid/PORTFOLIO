@@ -5,11 +5,11 @@ import { Link } from "@/i18n/navigation";
 import { featuredProjects } from "@/config/projects";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { ProjectCard } from "@/components/shared/project-card";
-import { StaggerContainer } from "@/components/shared/animated-wrapper";
+import { FadeIn, StaggerContainer } from "@/components/shared/animated-wrapper";
 import { Button } from "@/components/ui/button";
-import { FadeIn } from "@/components/shared/animated-wrapper";
+import React from "react";
 
-export function ProjectsShowcase() {
+export function ProjectsShowcase(): React.ReactElement {
   const t = useTranslations("projects");
 
   return (

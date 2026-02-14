@@ -2,10 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/navigation";
-import {
-  getLocalesByRegion,
-  getLocaleConfig,
-} from "@/i18n/locales";
+import { getLocalesByRegion, getLocaleConfig } from "@/i18n/locales";
 import { Button } from "@/components/ui/button";
 import {
   Command,
@@ -23,8 +20,9 @@ import {
 import { Check, Languages } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import React from "react";
 
-export function LocaleSwitcher() {
+export function LocaleSwitcher(): React.ReactElement {
   const currentLocale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
@@ -34,7 +32,7 @@ export function LocaleSwitcher() {
   const grouped = getLocalesByRegion();
   const currentConfig = getLocaleConfig(currentLocale);
 
-  function switchLocale(newLocale: string) {
+  function switchLocale(newLocale: string): void {
     router.replace(pathname, { locale: newLocale });
     setOpen(false);
   }

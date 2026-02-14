@@ -9,16 +9,16 @@ The Portfolio application supports Right-to-Left (RTL) languages. This document 
 The following 9 locales use RTL direction:
 
 | Code | Native Name | English Name |
-|------|-------------|--------------|
-| `ar` | العربية | Arabic |
-| `fa` | فارسی | Persian |
-| `he` | עברית | Hebrew |
-| `ku` | Kurdî | Kurdish |
-| `ps` | پښتو | Pashto |
-| `sd` | سنڌي | Sindhi |
-| `ur` | اردو | Urdu |
-| `ug` | ئۇيغۇرچە | Uyghur |
-| `yi` | ייִדיש | Yiddish |
+| ---- | ----------- | ------------ |
+| `ar` | العربية     | Arabic       |
+| `fa` | فارسی       | Persian      |
+| `he` | עברית       | Hebrew       |
+| `ku` | Kurdî       | Kurdish      |
+| `ps` | پښتو        | Pashto       |
+| `sd` | سنڌي        | Sindhi       |
+| `ur` | اردو        | Urdu         |
+| `ug` | ئۇيغۇرچە    | Uyghur       |
+| `yi` | ייִדיש      | Yiddish      |
 
 These are defined in `src/i18n/locales.ts` with `dir: "rtl"`.
 
@@ -33,7 +33,7 @@ import { getLocaleDirection } from "@/i18n/locales";
 
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
-  const dir = getLocaleDirection(locale);  // "ltr" or "rtl"
+  const dir = getLocaleDirection(locale); // "ltr" or "rtl"
 
   return (
     <html lang={locale} dir={dir} suppressHydrationWarning>
@@ -55,18 +55,18 @@ export default async function LocaleLayout({ children, params }: Props) {
 
 Use **CSS Logical Properties** instead of physical properties for layout that should flip in RTL:
 
-| Avoid (Physical) | Prefer (Logical) |
-|------------------|------------------|
-| `margin-left` | `margin-inline-start` |
-| `margin-right` | `margin-inline-end` |
-| `padding-left` | `padding-inline-start` |
-| `padding-right` | `padding-inline-end` |
-| `left` | `inset-inline-start` |
-| `right` | `inset-inline-end` |
-| `text-align: left` | `text-align: start` |
-| `text-align: right` | `text-align: end` |
-| `border-left` | `border-inline-start` |
-| `border-right` | `border-inline-end` |
+| Avoid (Physical)    | Prefer (Logical)       |
+| ------------------- | ---------------------- |
+| `margin-left`       | `margin-inline-start`  |
+| `margin-right`      | `margin-inline-end`    |
+| `padding-left`      | `padding-inline-start` |
+| `padding-right`     | `padding-inline-end`   |
+| `left`              | `inset-inline-start`   |
+| `right`             | `inset-inline-end`     |
+| `text-align: left`  | `text-align: start`    |
+| `text-align: right` | `text-align: end`      |
+| `border-left`       | `border-inline-start`  |
+| `border-right`      | `border-inline-end`    |
 
 **Example:**
 
@@ -106,7 +106,7 @@ Replace `ar` with any RTL locale code (e.g. `fa`, `he`, `ur`).
 In DevTools, confirm the `<html>` element has `dir="rtl"`:
 
 ```html
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl"></html>
 ```
 
 ---

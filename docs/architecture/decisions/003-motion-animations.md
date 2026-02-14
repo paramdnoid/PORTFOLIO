@@ -22,12 +22,12 @@ Requirements:
 
 Alternatives considered:
 
-| Option | Pros | Cons |
-|--------|------|------|
-| **GSAP** | Industry standard, powerful, ScrollTrigger | Imperative API, larger bundle, less React-idiomatic |
-| **CSS-only** | No JS, performant for simple cases | Limited orchestration, no spring physics, harder for complex sequences |
-| **Framer Motion** | React-first, popular | Superseded by Motion (same team, Motion is the successor) |
-| **Motion (motion/react)** | React-first, declarative, spring physics, tree-shakeable | Newer; smaller community than Framer Motion historically |
+| Option                    | Pros                                                     | Cons                                                                   |
+| ------------------------- | -------------------------------------------------------- | ---------------------------------------------------------------------- |
+| **GSAP**                  | Industry standard, powerful, ScrollTrigger               | Imperative API, larger bundle, less React-idiomatic                    |
+| **CSS-only**              | No JS, performant for simple cases                       | Limited orchestration, no spring physics, harder for complex sequences |
+| **Framer Motion**         | React-first, popular                                     | Superseded by Motion (same team, Motion is the successor)              |
+| **Motion (motion/react)** | React-first, declarative, spring physics, tree-shakeable | Newer; smaller community than Framer Motion historically               |
 
 ## Decision
 

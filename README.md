@@ -53,12 +53,12 @@ docs/                 # Architecture & development docs
 
 ## Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Production build |
-| `npm start` | Start production server |
-| `npm run lint` | Run ESLint |
+| Command         | Description                                           |
+| --------------- | ----------------------------------------------------- |
+| `npm run dev`   | Start development server                              |
+| `npm run build` | Production build                                      |
+| `npm start`     | Start production server                               |
+| `npm run lint`  | Run ESLint                                            |
 | `npm run fresh` | Clean install (removes node_modules, .next, lockfile) |
 
 ## Documentation

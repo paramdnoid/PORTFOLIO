@@ -5,8 +5,9 @@ import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/shared/animated-wrapper";
 import { ArrowRight } from "lucide-react";
+import React from "react";
 
-export function ContactCTA() {
+export function ContactCTA(): React.ReactElement {
   const t = useTranslations("contact");
 
   return (

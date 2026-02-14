@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import type { ReactElement } from "react";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { projects } from "@/config/projects";
@@ -7,11 +9,11 @@ type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };
 
-export function generateStaticParams() {
+export function generateStaticParams(): { slug: string }[] {
   return projects.map((project) => ({ slug: project.slug }));
 }
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) return {};
@@ -21,7 +23,9 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-export default async function ProjectDetailPage({ params }: Props) {
+export default async function ProjectDetailPage({
+  params,
+}: Props): Promise<ReactElement> {
   const { locale, slug } = await params;
   setRequestLocale(locale);
 

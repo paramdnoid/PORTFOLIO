@@ -1,6 +1,10 @@
 import { getRequestConfig } from "next-intl/server";
 import { routing } from "./routing";
 
+interface MessagesModule {
+  default: Record<string, unknown>;
+}
+
 const NAMESPACES = [
   "common",
   "navigation",
@@ -16,7 +20,10 @@ const NAMESPACES = [
 export default getRequestConfig(async ({ requestLocale }) => {
   let locale = await requestLocale;
 
-  if (!locale || !routing.locales.includes(locale as (typeof routing.locales)[number])) {
+  if (
+    !locale ||
+    !routing.locales.includes(locale as (typeof routing.locales)[number])
+  ) {
     locale = routing.defaultLocale;
   }
 
@@ -27,7 +34,10 @@ export default getRequestConfig(async ({ requestLocale }) => {
   ]);
 
   // Deep merge: locale-specific overrides fallback
-  const messages = locale === "en" ? localeMessages : deepMerge(fallbackMessages, localeMessages);
+  const messages =
+    locale === "en"
+      ? localeMessages
+      : deepMerge(fallbackMessages, localeMessages);
 
   return { locale, messages };
 });
@@ -38,7 +48,9 @@ async function loadAllNamespaces(
   const entries = await Promise.all(
     NAMESPACES.map(async (ns) => {
       try {
-        const mod = await import(`../../messages/${locale}/${ns}.json`);
+        const mod = (await import(
+          `../../messages/${locale}/${ns}.json`
+        )) as MessagesModule;
         return [ns, mod.default] as const;
       } catch {
         return [ns, {}] as const;
@@ -57,7 +69,7 @@ function deepMerge(
     const sourceVal = source[key];
     const targetVal = target[key];
     if (
-      sourceVal &&
+      sourceVal != null &&
       typeof sourceVal === "object" &&
       !Array.isArray(sourceVal)
     ) {

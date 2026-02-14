@@ -133,12 +133,12 @@ Skills (py-24 px-4)
 
 ### Categories
 
-| Key       | Skills (examples)                                      |
-|-----------|--------------------------------------------------------|
-| frontend  | React, Next.js, TypeScript, Tailwind CSS, HTML/CSS, Vue.js |
-| backend   | Node.js, Python, PostgreSQL, MongoDB, REST APIs, GraphQL |
-| tools     | Git, Docker, Vercel, GitHub Actions, Linux, Figma      |
-| other     | Agile/Scrum, CI/CD, Testing, Performance, SEO, a11y    |
+| Key      | Skills (examples)                                          |
+| -------- | ---------------------------------------------------------- |
+| frontend | React, Next.js, TypeScript, Tailwind CSS, HTML/CSS, Vue.js |
+| backend  | Node.js, Python, PostgreSQL, MongoDB, REST APIs, GraphQL   |
+| tools    | Git, Docker, Vercel, GitHub Actions, Linux, Figma          |
+| other    | Agile/Scrum, CI/CD, Testing, Performance, SEO, a11y        |
 
 ### Features
 

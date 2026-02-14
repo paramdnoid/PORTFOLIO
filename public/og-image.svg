@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#09090b"/>
+  <text x="600" y="260" text-anchor="middle" font-family="system-ui, sans-serif" font-size="72" font-weight="700" fill="#fafafa">Andre</text>
+  <text x="600" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" fill="#a1a1aa">Full-Stack Developer Portfolio</text>
+  <line x1="480" y1="390" x2="720" y2="390" stroke="#3f3f46" stroke-width="2"/>
+  <text x="600" y="440" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#71717a">andre.dev</text>
+</svg>

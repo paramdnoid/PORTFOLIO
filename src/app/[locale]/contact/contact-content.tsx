@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactElement } from "react";
 import { useTranslations } from "next-intl";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { FadeIn } from "@/components/shared/animated-wrapper";
@@ -7,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { Mail } from "lucide-react";
 
-export function ContactPageContent() {
+export function ContactPageContent(): ReactElement {
   const t = useTranslations("contact");
 
   return (
@@ -16,9 +17,7 @@ export function ContactPageContent() {
         <SectionHeading title={t("title")} subtitle={t("subtitle")} />
         <FadeIn>
           <div className="space-y-6">
-            <p className="text-lg text-muted-foreground">
-              {t("subtitle")}
-            </p>
+            <p className="text-lg text-muted-foreground">{t("subtitle")}</p>
             <Button size="lg" asChild>
               <a href={`mailto:${siteConfig.links.email}`}>
                 <Mail className="mr-2 size-4" />

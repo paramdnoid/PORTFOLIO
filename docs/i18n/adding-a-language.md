@@ -65,17 +65,17 @@ This script:
 
 Translate each file in `messages/{code}/`:
 
-| File | Content |
-|------|---------|
-| `common.json` | Shared UI strings |
-| `navigation.json` | Nav links |
-| `hero.json` | Hero section |
-| `about.json` | About section |
-| `projects.json` | Projects section |
-| `skills.json` | Skills section |
-| `contact.json` | Contact form |
-| `footer.json` | Footer |
-| `metadata.json` | Page titles and descriptions (SEO) |
+| File              | Content                            |
+| ----------------- | ---------------------------------- |
+| `common.json`     | Shared UI strings                  |
+| `navigation.json` | Nav links                          |
+| `hero.json`       | Hero section                       |
+| `about.json`      | About section                      |
+| `projects.json`   | Projects section                   |
+| `skills.json`     | Skills section                     |
+| `contact.json`    | Contact form                       |
+| `footer.json`     | Footer                             |
+| `metadata.json`   | Page titles and descriptions (SEO) |
 
 **Tips:**
 
@@ -112,13 +112,13 @@ This flag can be used by the UI (e.g. locale switcher) to indicate fully transla
 
 ## Quick Reference
 
-| Step | Action |
-|------|--------|
-| 1 | Add locale to `src/i18n/locales.ts` |
-| 2 | Run `npx tsx scripts/generate-locales.ts` |
-| 3 | Translate all 9 files in `messages/{code}/` |
-| 4 | Set `translationComplete: true` |
-| 5 | Test at `http://localhost:3000/{code}/` |
+| Step | Action                                      |
+| ---- | ------------------------------------------- |
+| 1    | Add locale to `src/i18n/locales.ts`         |
+| 2    | Run `npx tsx scripts/generate-locales.ts`   |
+| 3    | Translate all 9 files in `messages/{code}/` |
+| 4    | Set `translationComplete: true`             |
+| 5    | Test at `http://localhost:3000/{code}/`     |
 
 ---
 

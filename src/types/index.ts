@@ -40,13 +40,7 @@ export interface LocaleConfig {
   /** Text direction */
   dir: "ltr" | "rtl";
   /** Region for grouping in UI */
-  region:
-    | "europe"
-    | "asia"
-    | "middle-east"
-    | "africa"
-    | "americas"
-    | "oceania";
+  region: "europe" | "asia" | "middle-east" | "africa" | "americas" | "oceania";
   /** Whether translations are complete */
   translationComplete: boolean;
 }
