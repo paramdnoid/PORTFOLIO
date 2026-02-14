@@ -6,14 +6,14 @@ This guide helps new developers set up the Portfolio project and understand its 
 
 ## Prerequisites
 
-- **Node.js** >= 20.9
-- **npm** (included with Node.js)
+- **Node.js** >= 22.0.0 (see `.nvmrc` for exact version)
+- **npm** >= 10.0.0
 
 Verify your setup:
 
 ```bash
-node -v   # Should be v20.9.0 or higher
-npm -v
+node -v   # Should be v22.0.0 or higher
+npm -v    # Should be v10.0.0 or higher
 ```
 
 ---
@@ -88,7 +88,7 @@ The Portfolio is a Next.js 16 application with:
 When adding new locales or namespaces:
 
 ```bash
-npx tsx scripts/generate-locales.ts
+npm run generate:locales
 ```
 
 This creates `messages/{code}/*.json` from English for any locale that doesn't have them.

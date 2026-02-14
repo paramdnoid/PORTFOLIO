@@ -26,7 +26,7 @@ Documentation for UI components and their usage.
 | [Component Overview](components/overview.md)           | Component hierarchy, naming conventions, composition     |
 | [Layout Components](components/layout-components.md)   | Header, Footer, MobileNav, ThemeToggle, LocaleSwitcher   |
 | [Section Components](components/section-components.md) | Hero, AboutPreview, ProjectsShowcase, Skills, ContactCTA |
-| [Shared Components](components/shared-components.md)   | SectionHeading, ProjectCard, AnimatedWrapper             |
+| [Shared Components](components/shared-components.md)   | SectionHeading, ProjectCard, JsonLd, AnimatedWrapper     |
 | [UI Components](components/ui-components.md)           | shadcn/ui primitives (Button, Card, Badge, etc.)         |
 
 ---
@@ -72,6 +72,14 @@ How-to guides and tutorials for common tasks.
 
 ---
 
+## API Reference
+
+Auto-generated API documentation from source code TSDoc comments.
+
+> **Regenerate:** Run `npm run docs:api` to rebuild the API docs from source. Output is written to `docs/api/`.
+
+---
+
 ## Changelog
 
 Project history and release notes.
@@ -80,10 +88,13 @@ Project history and release notes.
 | ---------------------------- | ----------------------------------- |
 | [Changelog](../CHANGELOG.md) | Version history and notable changes |
 
+Releases are automated via [semantic-release](https://semantic-release.gitbook.io) using Conventional Commits.
+
 ---
 
 ## Quick Links
 
-- **New to the project?** Start with [Architecture Overview](architecture/overview.md)
+- **New to the project?** Start with [Getting Started](guides/getting-started.md)
 - **Understanding tech choices?** See [Tech Stack](architecture/tech-stack.md) and [ADRs](architecture/decisions/README.md)
 - **Finding your way around?** Use [Folder Structure](architecture/folder-structure.md)
+- **Contributing?** See [Contributing](../CONTRIBUTING.md) and [Development Workflow](guides/development-workflow.md)

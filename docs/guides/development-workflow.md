@@ -6,11 +6,14 @@ This document describes the Git workflow, commit conventions, and code review pr
 
 ## Git Branch Strategy
 
-| Branch      | Purpose                                        |
-| ----------- | ---------------------------------------------- |
-| `main`      | Production-ready code; protected               |
-| `feature/*` | New features (e.g. `feature/add-blog-page`)    |
-| `fix/*`     | Bug fixes (e.g. `fix/contact-form-validation`) |
+| Branch       | Purpose                                        |
+| ------------ | ---------------------------------------------- |
+| `main`       | Production-ready code; protected               |
+| `feat/*`     | New features (e.g. `feat/add-blog-page`)       |
+| `fix/*`      | Bug fixes (e.g. `fix/contact-form-validation`) |
+| `refactor/*` | Code refactoring                               |
+| `docs/*`     | Documentation changes                          |
+| `chore/*`    | Maintenance tasks                              |
 
 ### Workflow
 

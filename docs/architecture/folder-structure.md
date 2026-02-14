@@ -18,6 +18,9 @@ PORTFOLIO/
 ├── test/                    # Test setup
 ├── .github/                 # CI workflows, Dependabot, PR template
 ├── .vscode/                 # VS Code workspace settings and extensions
+├── sentry.client.config.ts  # Sentry client-side configuration
+├── sentry.server.config.ts  # Sentry server-side configuration
+├── sentry.edge.config.ts    # Sentry edge runtime configuration
 ├── package.json
 ├── tsconfig.json
 ├── postcss.config.mjs
@@ -26,6 +29,8 @@ PORTFOLIO/
 ├── playwright.config.ts     # E2E test configuration
 ├── eslint.config.ts         # ESLint flat config
 ├── commitlint.config.ts     # Commit message linting
+├── .releaserc.json          # semantic-release configuration
+├── typedoc.json             # TypeDoc API docs configuration
 ├── .prettierrc.json         # Prettier configuration
 ├── .editorconfig            # Editor settings
 ├── .npmrc                   # npm configuration
@@ -61,8 +66,7 @@ docs/
 ├── components/               # Component documentation
 ├── styling/                  # Styling and design system documentation
 ├── i18n/                     # Internationalization documentation
-├── guides/                   # How-to guides for development workflows
-└── changelog/                # Version history and release notes
+└── guides/                   # How-to guides for development workflows
 ```
 
 ---
@@ -131,8 +135,9 @@ src/
 ├── i18n/                     # Internationalization setup
 ├── lib/                      # Utilities and shared logic
 ├── types/                    # TypeScript type definitions
-├── env.ts                    # Environment variable validation (zod)
-└── proxy.ts                  # next-intl proxy for locale handling
+├── env.ts                    # Environment variable validation (Zod)
+├── instrumentation.ts        # Sentry instrumentation (server + edge)
+└── middleware.ts              # Edge middleware (rate limiting + i18n routing)
 ```
 
 ---
@@ -208,6 +213,7 @@ src/components/
 │   └── skills.tsx
 ├── shared/                   # Reusable domain components
 │   ├── animated-wrapper.tsx
+│   ├── json-ld.tsx           # JSON-LD structured data for SEO
 │   ├── project-card.tsx
 │   ├── section-heading.tsx
 │   └── section-heading.test.tsx
@@ -270,26 +276,43 @@ src/i18n/
 
 ---
 
-## proxy.ts
+## middleware.ts
 
-The proxy lives at **`src/proxy.ts`** (Next.js 16 convention, replaces the former `middleware.ts`). It uses `next-intl` to:
+The middleware lives at **`src/middleware.ts`** and combines two responsibilities:
 
-- Detect and set the locale from the URL or `Accept-Language`
-- Redirect to the appropriate locale prefix when needed
-- Exclude static files and API routes via the matcher config
+1. **Rate limiting** — In-memory sliding-window limiter (100 requests/minute per IP). Returns `429 Too Many Requests` when exceeded. Attaches `X-RateLimit-*` headers to every response.
+
+2. **i18n routing** — Delegates to `next-intl/middleware` to detect the visitor's locale and rewrite the URL accordingly.
 
 ```ts
-// src/proxy.ts
+// src/middleware.ts (simplified)
 import createMiddleware from "next-intl/middleware";
+import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 
 import { routing } from "./i18n/routing";
 
-export default createMiddleware(routing);
+const intlMiddleware = createMiddleware(routing);
+
+export default function middleware(request: NextRequest): NextResponse {
+  // 1. Rate limiting (per-IP sliding window)
+  // 2. next-intl locale routing
+  // 3. Attach rate-limit headers
+}
 
 export const config = {
-  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
+  matcher: ["/((?!api|_next|_vercel|monitoring|.*\\..*).*)"],
 };
 ```
+
+## instrumentation.ts
+
+The instrumentation file at **`src/instrumentation.ts`** initializes Sentry for error tracking and performance monitoring. It conditionally loads the appropriate Sentry config based on the runtime:
+
+- **Node.js runtime** — Imports `sentry.server.config.ts`
+- **Edge runtime** — Imports `sentry.edge.config.ts`
+
+The client-side Sentry SDK is initialized separately in `sentry.client.config.ts` at the project root.
 
 ---
 
@@ -307,18 +330,20 @@ docker/
 
 ## Summary
 
-| Path                | Purpose                                        |
-| ------------------- | ---------------------------------------------- |
-| `docs/`             | Documentation                                  |
-| `e2e/`              | Playwright E2E tests                           |
-| `messages/`         | Translation JSON per locale                    |
-| `scripts/`          | Build/utility scripts                          |
-| `src/app/[locale]/` | Pages and routes                               |
-| `src/components/`   | UI, layout, icons, sections, shared, providers |
-| `src/config/`       | Site, navigation, projects, skills             |
-| `src/lib/`          | Utilities and fonts                            |
-| `src/types/`        | TypeScript types                               |
-| `src/i18n/`         | i18n routing and config                        |
-| `src/env.ts`        | Environment variable validation                |
-| `src/proxy.ts`      | Locale proxy                                   |
-| `docker/`           | Dockerfile and Compose config                  |
+| Path                     | Purpose                                        |
+| ------------------------ | ---------------------------------------------- |
+| `docs/`                  | Documentation                                  |
+| `e2e/`                   | Playwright E2E tests                           |
+| `messages/`              | Translation JSON per locale                    |
+| `scripts/`               | Build/utility scripts                          |
+| `src/app/[locale]/`      | Pages and routes                               |
+| `src/components/`        | UI, layout, icons, sections, shared, providers |
+| `src/config/`            | Site, navigation, projects, skills             |
+| `src/lib/`               | Utilities and fonts                            |
+| `src/types/`             | TypeScript types                               |
+| `src/i18n/`              | i18n routing and config                        |
+| `src/env.ts`             | Environment variable validation                |
+| `src/middleware.ts`      | Rate limiting + i18n routing                   |
+| `src/instrumentation.ts` | Sentry instrumentation                         |
+| `docker/`                | Dockerfile and Compose config                  |
+| `sentry.*.config.ts`     | Sentry SDK configuration (client/server/edge)  |

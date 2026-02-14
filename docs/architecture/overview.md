@@ -14,8 +14,9 @@ flowchart TB
         A[HTTP Request]
     end
 
-    subgraph Proxy["Proxy Layer"]
-        B[next-intl Proxy]
+    subgraph Middleware["Middleware Layer"]
+        B1[Rate Limiter]
+        B2[next-intl i18n Routing]
     end
 
     subgraph AppRouter["App Router"]
@@ -38,8 +39,9 @@ flowchart TB
         J[Static Data]
     end
 
-    A --> B
-    B --> C
+    A --> B1
+    B1 --> B2
+    B2 --> C
     C --> D
     D --> E
     E --> F
@@ -51,7 +53,9 @@ flowchart TB
 
 ### Flow Description
 
-1. **Proxy** — The `next-intl` proxy intercepts requests to handle locale detection, redirects (e.g., `/` → `/en` or default locale), and locale prefix management. It runs before any page is rendered.
+1. **Middleware** — The Edge middleware (`src/middleware.ts`) runs before any page is rendered and handles two concerns:
+   - **Rate limiting** — An in-memory sliding-window limiter (100 req/min per IP) that returns `429 Too Many Requests` when exceeded and attaches `X-RateLimit-*` headers to every response.
+   - **i18n routing** — Delegates to `next-intl/middleware` to detect the locale from the URL or `Accept-Language`, handle redirects (e.g., `/` → `/en`), and manage locale prefix routing.
 
 2. **App Router [locale]** — Next.js App Router routes requests into the `[locale]` dynamic segment. Each locale (e.g., `en`, `es`, `fr`) shares the same route structure but receives locale-specific content.
 

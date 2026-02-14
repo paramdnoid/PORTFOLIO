@@ -90,6 +90,43 @@ Uses `projects` namespace:
 
 ---
 
+## JsonLd
+
+**File:** `src/components/shared/json-ld.tsx`
+**Type:** Server Component
+
+Renders a JSON-LD structured data `<script>` tag for SEO. The base schema describes the portfolio owner as a `Person` and the website as a `WebSite` using Schema.org vocabulary.
+
+### Props
+
+```tsx
+interface JsonLdProps {
+  additionalData?: Record<string, unknown>;
+}
+```
+
+| Prop             | Type                      | Required | Description                                         |
+| ---------------- | ------------------------- | -------- | --------------------------------------------------- |
+| `additionalData` | `Record<string, unknown>` | No       | Additional JSON-LD data to merge into Person schema |
+
+### Usage
+
+```tsx
+<JsonLd />
+<JsonLd additionalData={{ knowsAbout: ["React", "TypeScript"] }} />
+```
+
+### Output
+
+Generates a `@graph` with:
+
+- **WebSite** — Site name, URL, description
+- **Person** — Name, URL, description, social links (`sameAs`), job title
+
+Data is sourced from `siteConfig` in `src/config/site.ts`.
+
+---
+
 ## AnimatedWrapper
 
 **File:** `src/components/shared/animated-wrapper.tsx`  
