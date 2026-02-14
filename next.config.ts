@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 import bundleAnalyzer from "@next/bundle-analyzer";
+import { withSentryConfig } from "@sentry/nextjs";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
@@ -63,7 +64,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: https:",
       "font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com",
-      "connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com",
+      "connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://*.ingest.sentry.io",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",
@@ -108,4 +109,39 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withBundleAnalyzer(withNextIntl(nextConfig));
+const sentryBuildOptions = {
+  // For all available options, see:
+  // https://github.com/getsentry/sentry-webpack-plugin#options
+  ...(process.env["SENTRY_ORG"] ? { org: process.env["SENTRY_ORG"] } : {}),
+  ...(process.env["SENTRY_PROJECT"]
+    ? { project: process.env["SENTRY_PROJECT"] }
+    : {}),
+
+  // Only print logs for uploading source maps in CI.
+  silent: !process.env["CI"],
+
+  // Delete source maps after uploading to Sentry to keep them private.
+  sourcemaps: {
+    deleteSourcemapsAfterUpload: true,
+  },
+
+  // Automatically tree-shake Sentry logger statements to reduce bundle size.
+  disableLogger: true,
+
+  // Upload a larger set of source maps for prettier stack traces (increases build time).
+  widenClientFileUpload: true,
+
+  // Automatically instrument React components to track their performance.
+  reactComponentAnnotation: { enabled: true },
+
+  // Route browser requests to Sentry through a Next.js rewrite to circumvent
+  // ad-blockers. This can increase your server load as well as your hosting
+  // bill. Note: Check that the configured route will not match with your
+  // Next.js middleware, otherwise reporting of client-side errors will fail.
+  tunnelRoute: "/monitoring",
+} as const;
+
+export default withSentryConfig(
+  withBundleAnalyzer(withNextIntl(nextConfig)),
+  sentryBuildOptions,
+);
