@@ -9,13 +9,17 @@ import {
 } from "next-intl/server";
 import { notFound } from "next/navigation";
 
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 import { siteConfig } from "@/config/site";
 import { fontMono, fontSans } from "@/lib/fonts";
-import { getLocaleDirection } from "@/i18n/locales";
+import { getLocaleDirection, localeCodes } from "@/i18n/locales";
 import { routing } from "@/i18n/routing";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { JsonLd } from "@/components/shared/json-ld";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
@@ -38,6 +42,12 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
 
+  // Build hreflang alternates for all supported locales.
+  const languages: Record<string, string> = {};
+  for (const code of localeCodes) {
+    languages[code] = `${siteConfig.url}/${code}`;
+  }
+
   return {
     metadataBase: new URL(siteConfig.url),
     title: {
@@ -45,17 +55,31 @@ export async function generateMetadata({
       template: `%s | ${siteConfig.name}`,
     },
     description: t("homeDescription"),
+    alternates: {
+      canonical: `${siteConfig.url}/${locale}`,
+      languages,
+    },
     openGraph: {
       title: t("homeTitle"),
       description: t("homeDescription"),
-      url: siteConfig.url,
+      url: `${siteConfig.url}/${locale}`,
       siteName: siteConfig.name,
+      locale,
       type: "website",
+      images: [
+        {
+          url: siteConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: t("homeTitle"),
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: t("homeTitle"),
       description: t("homeDescription"),
+      images: [siteConfig.ogImage],
     },
     robots: {
       index: true,
@@ -93,6 +117,9 @@ export default async function LocaleLayout({
             </TooltipProvider>
           </NextIntlClientProvider>
         </ThemeProvider>
+        <JsonLd />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
