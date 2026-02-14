@@ -11,6 +11,13 @@ import { LocaleSwitcher } from "@/components/layout/locale-switcher";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 
+/**
+ * Sticky site header with desktop navigation, locale switcher,
+ * theme toggle, and a mobile hamburger menu.
+ *
+ * Applies a translucent backdrop blur after the user scrolls
+ * past 50 px to visually separate the header from page content.
+ */
 export function Header(): React.ReactElement {
   const t = useTranslations("navigation");
   const [scrolled, setScrolled] = useState(false);

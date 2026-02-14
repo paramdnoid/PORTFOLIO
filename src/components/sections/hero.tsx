@@ -9,6 +9,14 @@ import { Link } from "@/i18n/navigation";
 import { FadeIn } from "@/components/shared/animated-wrapper";
 import { Button } from "@/components/ui/button";
 
+/**
+ * Full-viewport hero section displayed at the top of the home page.
+ *
+ * Shows a greeting, the developer's name, role, tagline, and two
+ * call-to-action buttons ("View Projects" and "Contact"). Each text
+ * block fades in with a staggered delay. A bouncing arrow at the
+ * bottom hints that the page is scrollable.
+ */
 export function Hero(): React.ReactElement {
   const t = useTranslations("hero");
 

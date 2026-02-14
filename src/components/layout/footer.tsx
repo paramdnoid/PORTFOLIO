@@ -8,6 +8,12 @@ import { Mail } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { GitHubIcon, LinkedInIcon } from "@/components/icons";
 
+/**
+ * Site footer with social/contact links and a copyright notice.
+ *
+ * Renders GitHub, LinkedIn, and email icons sourced from
+ * {@link siteConfig}. The copyright year updates automatically.
+ */
 export function Footer(): React.ReactElement {
   const t = useTranslations("footer");
   const currentYear = new Date().getFullYear();

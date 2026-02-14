@@ -12,6 +12,13 @@ import {
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Badge } from "@/components/ui/badge";
 
+/**
+ * Skills section displaying technology proficiencies grouped by category.
+ *
+ * Iterates over {@link skillCategories} (frontend, backend, tools, other)
+ * and renders each skill as a `Badge`. Categories and individual
+ * badges animate in with staggered fade-in effects.
+ */
 export function Skills(): React.ReactElement {
   const t = useTranslations("skills");
 

@@ -1,11 +1,26 @@
+/**
+ * Server-side request configuration for `next-intl`.
+ *
+ * Loads translation messages for the requested locale, falling back
+ * to English for any missing keys. Messages are split into namespaces
+ * and loaded in parallel for performance.
+ *
+ * @module i18n/request
+ */
 import { getRequestConfig } from "next-intl/server";
 
 import { routing } from "./routing";
 
+/** Shape of a dynamically imported messages JSON module. */
 type MessagesModule = {
   default: Record<string, unknown>;
 };
 
+/**
+ * All translation namespace identifiers.
+ *
+ * Each namespace corresponds to a JSON file under `messages/<locale>/`.
+ */
 const NAMESPACES = [
   "common",
   "navigation",
@@ -40,6 +55,15 @@ export default getRequestConfig(async ({ requestLocale }) => {
   return { locale, messages };
 });
 
+/**
+ * Load all namespace JSON files for a given locale in parallel.
+ *
+ * Missing namespace files are silently ignored so that partially
+ * translated locales still work.
+ *
+ * @param locale - ISO 639-1 locale code, e.g. "de".
+ * @returns An object keyed by namespace with the parsed messages.
+ */
 async function loadAllNamespaces(
   locale: string,
 ): Promise<Record<string, Record<string, string>>> {
@@ -58,6 +82,16 @@ async function loadAllNamespaces(
   return Object.fromEntries(entries);
 }
 
+/**
+ * Recursively merge two plain objects (shallow clone, source wins).
+ *
+ * Used to overlay locale-specific translations on top of the
+ * English fallback so that untranslated keys still render in English.
+ *
+ * @param target - Base object (fallback translations).
+ * @param source - Override object (locale-specific translations).
+ * @returns A new merged object.
+ */
 function deepMerge(
   target: Record<string, unknown>,
   source: Record<string, unknown>,

@@ -8,6 +8,12 @@ import { Moon, Sun } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
+/**
+ * Button that toggles between light and dark colour themes.
+ *
+ * Uses `next-themes` to persist the preference. The sun/moon icons
+ * cross-fade via CSS transforms for a smooth transition.
+ */
 export function ThemeToggle(): React.ReactElement {
   const { setTheme, resolvedTheme } = useTheme();
   const t = useTranslations("common");

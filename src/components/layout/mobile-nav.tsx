@@ -18,6 +18,13 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
+/**
+ * Slide-out mobile navigation drawer (visible on small screens).
+ *
+ * Opens a Radix `Sheet` from the right side containing the same
+ * navigation links as the desktop header. Links close the sheet
+ * on click for a seamless navigation experience.
+ */
 export function MobileNav(): React.ReactElement {
   const t = useTranslations("navigation");
   const tCommon = useTranslations("common");

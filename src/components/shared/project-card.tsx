@@ -19,10 +19,23 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-type ProjectCardProps = {
+/** Props for the {@link ProjectCard} component. */
+export type ProjectCardProps = {
+  /** The project data to display. */
   project: Project;
 };
 
+/**
+ * Card component that renders a single portfolio project.
+ *
+ * Displays the project image, title, description, technology tags,
+ * and action buttons (live URL and/or GitHub link). Featured projects
+ * receive a secondary badge.
+ *
+ * Wrapped in a {@link FadeInItem} for staggered entrance animations.
+ *
+ * @param props - See `ProjectCardProps` for available options.
+ */
 export function ProjectCard({ project }: ProjectCardProps): React.ReactElement {
   const t = useTranslations("projects");
 

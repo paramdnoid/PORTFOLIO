@@ -4,12 +4,24 @@ import React from "react";
 
 import { FadeIn } from "@/components/shared/animated-wrapper";
 
-type SectionHeadingProps = {
+/** Props for the {@link SectionHeading} component. */
+export type SectionHeadingProps = {
+  /** The main heading text (rendered as `<h2>`). */
   title: string;
+  /** Optional subtitle displayed above the title in small caps. */
   subtitle?: string | undefined;
+  /** Additional CSS class names for the outer wrapper. */
   className?: string | undefined;
 };
 
+/**
+ * Reusable section heading with an optional subtitle.
+ *
+ * Renders a bold `<h2>` title and, when provided, a small uppercase
+ * subtitle above it. Wrapped in {@link FadeIn} for scroll animation.
+ *
+ * @param props - See `SectionHeadingProps` for available options.
+ */
 export function SectionHeading({
   title,
   subtitle,

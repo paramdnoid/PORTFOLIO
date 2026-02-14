@@ -1,3 +1,9 @@
+/**
+ * Categorised skill sets displayed in the Skills section.
+ *
+ * Each key represents a skill category (frontend, backend, tools, other)
+ * and its value is a readonly array of technology/skill names.
+ */
 export const skillCategories = {
   frontend: [
     "React",
@@ -19,4 +25,9 @@ export const skillCategories = {
   other: ["Agile/Scrum", "CI/CD", "Testing", "Performance", "SEO", "a11y"],
 } as const;
 
+/**
+ * Union type of valid skill category keys.
+ *
+ * Derived from the keys of {@link skillCategories}.
+ */
 export type SkillCategory = keyof typeof skillCategories;

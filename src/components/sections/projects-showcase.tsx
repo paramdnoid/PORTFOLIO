@@ -10,6 +10,13 @@ import { ProjectCard } from "@/components/shared/project-card";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Button } from "@/components/ui/button";
 
+/**
+ * Featured projects grid shown on the home page.
+ *
+ * Renders {@link featuredProjects} as a responsive two-column grid
+ * of {@link ProjectCard} components with staggered entrance animations.
+ * Includes a "View All Projects" link at the bottom.
+ */
 export function ProjectsShowcase(): React.ReactElement {
   const t = useTranslations("projects");
 

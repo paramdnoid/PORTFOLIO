@@ -1066,17 +1066,34 @@ export const regionLabels: Record<LocaleConfig["region"], string> = {
   oceania: "Oceania",
 };
 
-/** Look up locale config by code */
+/**
+ * Look up locale configuration by its ISO 639-1 code.
+ *
+ * @param code - ISO 639-1 locale code, e.g. "de".
+ * @returns The matching {@link LocaleConfig}, or `undefined` if not found.
+ */
 export function getLocaleConfig(code: string): LocaleConfig | undefined {
   return locales.find((l) => l.code === code);
 }
 
-/** Get text direction for a locale */
+/**
+ * Get the text direction for a locale.
+ *
+ * @param code - ISO 639-1 locale code.
+ * @returns `"rtl"` for right-to-left locales, `"ltr"` otherwise.
+ */
 export function getLocaleDirection(code: string): "ltr" | "rtl" {
   return getLocaleConfig(code)?.dir ?? "ltr";
 }
 
-/** Group locales by region (for Locale Switcher UI) */
+/**
+ * Group all supported locales by their geographic region.
+ *
+ * Used by the `LocaleSwitcher` component to render locales
+ * in categorised groups with human-readable region headings.
+ *
+ * @returns An object keyed by region label with arrays of {@link LocaleConfig}.
+ */
 export function getLocalesByRegion(): Record<string, LocaleConfig[]> {
   const grouped: Record<string, LocaleConfig[]> = {};
   for (const locale of locales) {

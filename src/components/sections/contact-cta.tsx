@@ -9,6 +9,13 @@ import { Link } from "@/i18n/navigation";
 import { FadeIn } from "@/components/shared/animated-wrapper";
 import { Button } from "@/components/ui/button";
 
+/**
+ * Call-to-action section encouraging visitors to get in touch.
+ *
+ * Centered layout with a heading, subtitle, and a prominent
+ * button linking to the `/contact` page. Each element fades in
+ * with a staggered delay.
+ */
 export function ContactCTA(): React.ReactElement {
   const t = useTranslations("contact");
 

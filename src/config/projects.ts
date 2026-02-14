@@ -1,5 +1,13 @@
 import type { Project } from "@/types";
 
+/**
+ * Complete list of portfolio projects.
+ *
+ * Each entry is rendered as a `ProjectCard` on the projects page.
+ * Projects marked as `featured` also appear in the home page showcase.
+ *
+ * @see {@link Project} for the type definition.
+ */
 export const projects: Project[] = [
   {
     title: "E-Commerce Platform",
@@ -41,4 +49,9 @@ export const projects: Project[] = [
   },
 ];
 
+/**
+ * Subset of {@link projects} where `featured` is `true`.
+ *
+ * Used by the `ProjectsShowcase` section on the home page.
+ */
 export const featuredProjects = projects.filter((p) => p.featured);

@@ -23,6 +23,14 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
+/**
+ * Popover-based locale switcher with search and region grouping.
+ *
+ * Displays the current locale and opens a searchable command palette
+ * listing all ~184 supported locales grouped by geographic region.
+ * Selecting a locale triggers a client-side route replacement via
+ * `next-intl`'s locale-aware router.
+ */
 export function LocaleSwitcher(): React.ReactElement {
   const currentLocale = useLocale();
   const router = useRouter();
