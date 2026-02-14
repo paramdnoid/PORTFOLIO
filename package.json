@@ -38,6 +38,104 @@
     "release": "semantic-release",
     "prepare": "husky"
   },
+  "prettier": {
+    "semi": true,
+    "singleQuote": false,
+    "tabWidth": 2,
+    "trailingComma": "all",
+    "printWidth": 80,
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "endOfLine": "lf",
+    "plugins": [
+      "@ianvs/prettier-plugin-sort-imports"
+    ],
+    "importOrder": [
+      "^react",
+      "^next",
+      "",
+      "<THIRD_PARTY_MODULES>",
+      "",
+      "^@/types(.*)",
+      "^@/config(.*)",
+      "^@/lib(.*)",
+      "^@/i18n(.*)",
+      "^@/components(.*)",
+      "^@/app(.*)",
+      "",
+      "^[./]"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "type-enum": [
+        2,
+        "always",
+        [
+          "feat",
+          "fix",
+          "docs",
+          "style",
+          "refactor",
+          "perf",
+          "test",
+          "build",
+          "ci",
+          "chore",
+          "revert"
+        ]
+      ],
+      "subject-case": [
+        2,
+        "never",
+        [
+          "start-case",
+          "pascal-case",
+          "upper-case"
+        ]
+      ],
+      "subject-max-length": [
+        2,
+        "always",
+        100
+      ],
+      "body-max-line-length": [
+        2,
+        "always",
+        200
+      ]
+    }
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "docs/CHANGELOG.md"
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "docs/CHANGELOG.md",
+            "package.json",
+            "package-lock.json"
+          ],
+          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ],
+      "@semantic-release/github"
+    ]
+  },
   "lint-staged": {
     "*.{ts,tsx,mts}": [
       "eslint --fix",

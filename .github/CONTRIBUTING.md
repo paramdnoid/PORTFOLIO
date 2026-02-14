@@ -21,7 +21,7 @@ npm install
 npm run dev
 ```
 
-For a detailed setup guide, see [docs/guides/getting-started.md](docs/guides/getting-started.md).
+For a detailed setup guide, see [docs/guides/getting-started.md](../docs/guides/getting-started.md).
 
 ## Development Workflow
 
@@ -45,7 +45,7 @@ type(scope?): subject
 
 **Allowed types:** `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
 
-For detailed commit conventions and examples, see [docs/guides/development-workflow.md](docs/guides/development-workflow.md).
+For detailed commit conventions and examples, see [docs/guides/development-workflow.md](../docs/guides/development-workflow.md).
 
 ### Code Quality
 
@@ -88,7 +88,7 @@ Git hooks are managed by Husky and run automatically:
 
 ## Further Reading
 
-- [Development Workflow](docs/guides/development-workflow.md) — Git strategy, commits, code review checklist
-- [Architecture Overview](docs/architecture/overview.md) — High-level architecture
-- [Folder Structure](docs/architecture/folder-structure.md) — Project layout
-- [Full Documentation](docs/README.md) — All project documentation
+- [Development Workflow](../docs/guides/development-workflow.md) — Git strategy, commits, code review checklist
+- [Architecture Overview](../docs/architecture/overview.md) — High-level architecture
+- [Folder Structure](../docs/architecture/folder-structure.md) — Project layout
+- [Full Documentation](../docs/README.md) — All project documentation

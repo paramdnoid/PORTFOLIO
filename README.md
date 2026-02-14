@@ -88,7 +88,7 @@ Detailed documentation is available in the [`docs/`](./docs) directory:
 - [Development Workflow](./docs/guides/development-workflow.md)
 - [Adding a Project](./docs/guides/adding-a-project.md)
 - [Deployment](./docs/guides/deployment.md)
-- [Changelog](./CHANGELOG.md)
+- [Changelog](./docs/CHANGELOG.md)
 
 ## License
 

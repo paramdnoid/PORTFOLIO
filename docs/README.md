@@ -84,9 +84,9 @@ Auto-generated API documentation from source code TSDoc comments.
 
 Project history and release notes.
 
-| Document                     | Description                         |
-| ---------------------------- | ----------------------------------- |
-| [Changelog](../CHANGELOG.md) | Version history and notable changes |
+| Document                  | Description                         |
+| ------------------------- | ----------------------------------- |
+| [Changelog](CHANGELOG.md) | Version history and notable changes |
 
 Releases are automated via [semantic-release](https://semantic-release.gitbook.io) using Conventional Commits.
 
@@ -97,4 +97,4 @@ Releases are automated via [semantic-release](https://semantic-release.gitbook.i
 - **New to the project?** Start with [Getting Started](guides/getting-started.md)
 - **Understanding tech choices?** See [Tech Stack](architecture/tech-stack.md) and [ADRs](architecture/decisions/README.md)
 - **Finding your way around?** Use [Folder Structure](architecture/folder-structure.md)
-- **Contributing?** See [Contributing](../CONTRIBUTING.md) and [Development Workflow](guides/development-workflow.md)
+- **Contributing?** See [Contributing](../.github/CONTRIBUTING.md) and [Development Workflow](guides/development-workflow.md)

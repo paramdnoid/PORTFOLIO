@@ -65,4 +65,4 @@ This document lists all technologies used in the Portfolio project, with version
 
 - Versions are approximate; exact versions are defined in `package.json`.
 - Run `npm list` or inspect `package.json` for the current locked versions.
-- Major upgrades should be documented in the [Changelog](../../CHANGELOG.md).
+- Major upgrades should be documented in the [Changelog](../CHANGELOG.md).

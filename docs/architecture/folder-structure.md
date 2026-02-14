@@ -16,29 +16,23 @@ PORTFOLIO/
 ├── src/                     # Application source code
 ├── docker/                  # Docker configuration
 ├── test/                    # Test setup
-├── .github/                 # CI workflows, Dependabot, PR template
+├── .github/                 # CI workflows, Dependabot, PR template, CONTRIBUTING, SECURITY
 ├── .vscode/                 # VS Code workspace settings and extensions
 ├── sentry.client.config.ts  # Sentry client-side configuration
 ├── sentry.server.config.ts  # Sentry server-side configuration
 ├── sentry.edge.config.ts    # Sentry edge runtime configuration
-├── package.json
+├── package.json             # Dependencies, scripts, prettier/commitlint/release config
 ├── tsconfig.json
 ├── postcss.config.mjs
 ├── next.config.ts
 ├── vitest.config.ts         # Unit/component test configuration
 ├── playwright.config.ts     # E2E test configuration
 ├── eslint.config.ts         # ESLint flat config
-├── commitlint.config.ts     # Commit message linting
-├── .releaserc.json          # semantic-release configuration
 ├── typedoc.json             # TypeDoc API docs configuration
-├── .prettierrc.json         # Prettier configuration
 ├── .editorconfig            # Editor settings
 ├── .npmrc                   # npm configuration
 ├── .nvmrc                   # Node.js version pinning
 ├── .dockerignore            # Docker build exclusions
-├── CHANGELOG.md             # Version history (Keep a Changelog)
-├── CONTRIBUTING.md          # Contribution guidelines
-├── SECURITY.md              # Security policy
 └── LICENSE                  # MIT License
 ```
 
@@ -51,6 +45,7 @@ Project documentation. Contains architecture docs, ADRs, component docs, styling
 ```
 docs/
 ├── README.md                 # Documentation index
+├── CHANGELOG.md              # Version history (Keep a Changelog)
 ├── architecture/             # Architecture documentation
 │   ├── overview.md
 │   ├── tech-stack.md
